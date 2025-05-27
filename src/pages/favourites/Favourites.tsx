@@ -1,6 +1,5 @@
-import { useAppSelector } from "../../services/useTypedSelector";
-
 import { Card, SwitcherTheme } from "../../components";
+import { useAppSelector } from "../../services/useTypedSelector";
 
 const Favourites: React.FC = () => {
   const { favourites } = useAppSelector((state) => state.movies);

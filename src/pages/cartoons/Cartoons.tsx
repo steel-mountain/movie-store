@@ -1,8 +1,7 @@
 import { useEffect } from "react";
+import { useNavigate, useSearchParams } from "react-router-dom";
+import { Card, Paginate, SwitcherTheme } from "../../components";
 import { useGetCartoonsQuery } from "../../store/movies/movies.api";
-import { useSearchParams, useNavigate } from "react-router-dom";
-
-import { Paginate, Card, SwitcherTheme } from "../../components";
 
 const Cartoons: React.FC = () => {
   const [searchParams] = useSearchParams();

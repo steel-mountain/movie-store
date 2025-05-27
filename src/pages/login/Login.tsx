@@ -1,11 +1,11 @@
 import { useForm } from "react-hook-form";
-import { fetchAuthLogin } from "../../store/movies/auth.slice";
+import { Navigate } from "react-router-dom";
+import { UserLogin } from "../../models/models-Users";
 import {
   useAppDispatch,
   useAppSelector,
 } from "../../services/useTypedSelector";
-import { UserLogin } from "../../models/models-Users";
-import { Navigate } from "react-router-dom";
+import { fetchAuthLogin } from "../../store/movies/auth.slice";
 
 const Login: React.FC = () => {
   const isAuth = Boolean(useAppSelector((state) => state.auth.data));

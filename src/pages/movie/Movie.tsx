@@ -1,7 +1,6 @@
-import { useParams, useNavigate } from "react-router-dom";
-import { useGetMovieQuery } from "../../store/movies/movies.api";
-
+import { useNavigate, useParams } from "react-router-dom";
 import { SimilarMovies } from "../../components";
+import { useGetMovieQuery } from "../../store/movies/movies.api";
 
 const Movie: React.FC = () => {
   const { id = "" } = useParams();

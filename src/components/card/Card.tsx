@@ -1,10 +1,9 @@
 import { useState } from "react";
-import { IMovies } from "../../models/models-Movies";
 import { Link } from "react-router-dom";
-import Rating from "../rating/Rating";
+import heartFavourite from "../../images/heart-favourite.svg";
 import heart from "../../images/heart.svg";
 import heartWhite from "../../images/heartWhite.svg";
-import heartFavourite from "../../images/heart-favourite.svg";
+import { IMovies } from "../../models/models-Movies";
 import {
   useAppDispatch,
   useAppSelector,
@@ -13,6 +12,7 @@ import {
   addFavourites,
   removeFavourite,
 } from "../../store/movies/movies.slice";
+import Rating from "../rating/Rating";
 
 interface PropsCard {
   movie: IMovies;

@@ -1,17 +1,17 @@
 import { useState } from "react";
-import NavItem from "../navItem/NavItem";
-import SwitcherTheme from "../switcherTheme/SwitcherTheme";
-import searchSvg from "../../images/search.svg";
-import closeMenu from "../../images/icon-close-menu.svg";
-import closeMenuWhite from "../../images/icon-close-menu-white.svg";
 import { Link, useNavigate } from "react-router-dom";
+import closeMenuWhite from "../../images/icon-close-menu-white.svg";
+import closeMenu from "../../images/icon-close-menu.svg";
+import searchSvg from "../../images/search.svg";
 import {
   useAppDispatch,
   useAppSelector,
 } from "../../services/useTypedSelector";
+import { logout } from "../../store/movies/auth.slice";
 import { changeNewPage } from "../../store/movies/movies.slice";
 import { Button } from "../header/Header";
-import { logout } from "../../store/movies/auth.slice";
+import NavItem from "../navItem/NavItem";
+import SwitcherTheme from "../switcherTheme/SwitcherTheme";
 
 interface IMobileMenu {
   isOpen: boolean;

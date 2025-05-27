@@ -1,6 +1,6 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import { IResponseMovies } from "../../models/models-Movies";
 import { IResponseMovie } from "../../models/models-Movie";
+import { IResponseMovies } from "../../models/models-Movies";
 import { getRandom } from "../../services/getRandom";
 
 const API_KEY = "9KAR067-Q14MT1Q-K8BN9QR-B80H7FW";

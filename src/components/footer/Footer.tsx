@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-
 import Wrapper from "../wrapper/Wrapper";
 
 const Footer: React.FC = () => {

@@ -1,17 +1,16 @@
 import { memo, useRef, useState } from "react";
-import NavItem from "../navItem/NavItem";
-import Wrapper from "../wrapper/Wrapper";
-import MobileMenu from "../mobileMenu/MobileMenu";
-
 import { Link, useNavigate } from "react-router-dom";
 import {
   useAppDispatch,
   useAppSelector,
 } from "../../services/useTypedSelector";
 import { changeNewPage } from "../../store/movies/movies.slice";
+import MobileMenu from "../mobileMenu/MobileMenu";
+import NavItem from "../navItem/NavItem";
+import Wrapper from "../wrapper/Wrapper";
 
-import mobileMenuIcon from "../../images/icon-menu.svg";
 import mobileMenuIconWhite from "../../images/icon-menu-white.svg";
+import mobileMenuIcon from "../../images/icon-menu.svg";
 import searchSvg from "../../images/search.svg";
 import { logout } from "../../store/movies/auth.slice";
 

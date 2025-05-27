@@ -1,12 +1,12 @@
 import { useForm } from "react-hook-form";
+import { Navigate } from "react-router-dom";
+import avatar from "../../images/avatar.png";
+import { IUserRegister } from "../../models/models-Users";
 import {
   useAppDispatch,
   useAppSelector,
 } from "../../services/useTypedSelector";
-import { IUserRegister } from "../../models/models-Users";
 import { fetchAuthRegister } from "../../store/movies/auth.slice";
-import { Navigate } from "react-router-dom";
-import avatar from "../../images/avatar.png";
 
 const Register: React.FC = () => {
   const isAuth = Boolean(useAppSelector((state) => state.auth.data));

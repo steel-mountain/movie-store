@@ -1,6 +1,5 @@
 import { Outlet } from "react-router-dom";
-
-import { Header, Footer, Wrapper } from "../../components";
+import { Footer, Header, Wrapper } from "../../components";
 
 const Layout: React.FC = () => {
   return (

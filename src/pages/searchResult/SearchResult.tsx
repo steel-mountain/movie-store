@@ -1,7 +1,6 @@
 import { useSearchParams } from "react-router-dom";
-import { useGetMoviesByQuery } from "../../store/movies/movies.api";
-
 import { Card, Paginate, SwitcherTheme } from "../../components";
+import { useGetMoviesByQuery } from "../../store/movies/movies.api";
 
 import {
   useAppDispatch,
