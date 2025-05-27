@@ -7,7 +7,7 @@ import {
 } from "../../services/useTypedSelector";
 import { fetchAuthLogin } from "../../store/movies/auth.slice";
 
-const Login: React.FC = () => {
+const Login = () => {
   const isAuth = Boolean(useAppSelector((state) => state.auth.data));
   const dispatch = useAppDispatch();
   const {

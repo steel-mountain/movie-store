@@ -1,7 +1,7 @@
 import { Card, SwitcherTheme } from "../../components";
 import { useAppSelector } from "../../services/useTypedSelector";
 
-const Favourites: React.FC = () => {
+const Favourites = () => {
   const { favourites } = useAppSelector((state) => state.movies);
   const isAuth = Boolean(useAppSelector((state) => state.auth.data));
 

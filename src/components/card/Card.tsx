@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { FC, MouseEvent, useState } from "react";
 import { Link } from "react-router-dom";
 import heartFavourite from "../../images/heart-favourite.svg";
 import heart from "../../images/heart.svg";
@@ -20,7 +20,7 @@ interface PropsCard {
   isFavourite?: boolean;
 }
 
-const Card: React.FC<PropsCard> = ({ movie, query, isFavourite = false }) => {
+const Card: FC<PropsCard> = ({ movie, query, isFavourite = false }) => {
   const dispatch = useAppDispatch();
 
   const theme = useAppSelector((state) => state.movies.theme);
@@ -33,7 +33,7 @@ const Card: React.FC<PropsCard> = ({ movie, query, isFavourite = false }) => {
     typeof favourite === "object" ? true : false
   );
 
-  const handlerIsOrFalseFav = (e: React.MouseEvent<HTMLButtonElement>) => {
+  const handlerIsOrFalseFav = (e: MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
 
     if (isFav) {
@@ -45,7 +45,7 @@ const Card: React.FC<PropsCard> = ({ movie, query, isFavourite = false }) => {
     }
   };
 
-  const handlerAddOrRemoveMovie = (e: React.MouseEvent<HTMLButtonElement>) => {
+  const handlerAddOrRemoveMovie = (e: MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
 
     if (isFav) {

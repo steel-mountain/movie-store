@@ -1,8 +1,9 @@
+import { FC } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { SimilarMovies } from "../../components";
 import { useGetMovieQuery } from "../../store/movies/movies.api";
 
-const Movie: React.FC = () => {
+const Movie = () => {
   const { id = "" } = useParams();
 
   return <MovieContent key={id} id={id} />;
@@ -10,7 +11,7 @@ const Movie: React.FC = () => {
 
 export default Movie;
 
-const MovieContent: React.FC<{ id: string }> = ({ id }) => {
+const MovieContent: FC<{ id: string }> = ({ id }) => {
   const navigate = useNavigate();
   const { data: movie, isLoading, isError } = useGetMovieQuery(id);
 

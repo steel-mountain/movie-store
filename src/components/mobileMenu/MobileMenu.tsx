@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { Dispatch, FC, SetStateAction, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import closeMenuWhite from "../../images/icon-close-menu-white.svg";
 import closeMenu from "../../images/icon-close-menu.svg";
@@ -15,10 +15,10 @@ import SwitcherTheme from "../switcherTheme/SwitcherTheme";
 
 interface IMobileMenu {
   isOpen: boolean;
-  setIsMobileMenu: React.Dispatch<React.SetStateAction<boolean>>;
+  setIsMobileMenu: Dispatch<SetStateAction<boolean>>;
 }
 
-const MobileMenu: React.FC<IMobileMenu> = ({ isOpen, setIsMobileMenu }) => {
+const MobileMenu: FC<IMobileMenu> = ({ isOpen, setIsMobileMenu }) => {
   const [search, setSearch] = useState("");
   const isAuth = Boolean(useAppSelector((state) => state.auth.data));
   const navigate = useNavigate();

@@ -1,20 +1,19 @@
-import { memo, useRef, useState } from "react";
+import { FC, memo, useRef, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import mobileMenuIconWhite from "../../images/icon-menu-white.svg";
+import mobileMenuIcon from "../../images/icon-menu.svg";
+import searchSvg from "../../images/search.svg";
 import {
   useAppDispatch,
   useAppSelector,
 } from "../../services/useTypedSelector";
+import { logout } from "../../store/movies/auth.slice";
 import { changeNewPage } from "../../store/movies/movies.slice";
 import MobileMenu from "../mobileMenu/MobileMenu";
 import NavItem from "../navItem/NavItem";
 import Wrapper from "../wrapper/Wrapper";
 
-import mobileMenuIconWhite from "../../images/icon-menu-white.svg";
-import mobileMenuIcon from "../../images/icon-menu.svg";
-import searchSvg from "../../images/search.svg";
-import { logout } from "../../store/movies/auth.slice";
-
-const Header: React.FC = () => {
+const Header = () => {
   const [isMobileMenu, setIsMobileMenu] = useState(false);
   const navigate = useNavigate();
   const search = useRef<HTMLInputElement>(null);
@@ -119,7 +118,7 @@ interface IButtonProps {
   onClickLogout?: () => void;
 }
 
-export const Button: React.FC<IButtonProps> = memo(
+export const Button: FC<IButtonProps> = memo(
   ({ text, isAuth, onClickLogout }) => {
     return (
       <button

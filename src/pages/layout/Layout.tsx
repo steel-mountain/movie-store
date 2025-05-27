@@ -1,7 +1,7 @@
 import { Outlet } from "react-router-dom";
 import { Footer, Header, Wrapper } from "../../components";
 
-const Layout: React.FC = () => {
+const Layout = () => {
   return (
     <div className="h-screen min-h-screen flex flex-col">
       <header className="w-full h-[100px] flex items-center dark:bg-[#0B0C0E]">

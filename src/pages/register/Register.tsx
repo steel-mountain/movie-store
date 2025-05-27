@@ -8,7 +8,7 @@ import {
 } from "../../services/useTypedSelector";
 import { fetchAuthRegister } from "../../store/movies/auth.slice";
 
-const Register: React.FC = () => {
+const Register = () => {
   const isAuth = Boolean(useAppSelector((state) => state.auth.data));
   const dispatch = useAppDispatch();
   const {

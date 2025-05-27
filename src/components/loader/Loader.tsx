@@ -1,6 +1,6 @@
 import "./loader.css";
 
-const Loader: React.FC = () => {
+const Loader = () => {
   return (
     <section className="flex justify-center items-center h-screen">
       <div className="lds-ring">

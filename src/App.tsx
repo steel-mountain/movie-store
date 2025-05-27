@@ -1,6 +1,6 @@
 import Pages from "./pages";
 
-const App: React.FC = () => {
+const App = () => {
   return <Pages />;
 };
 

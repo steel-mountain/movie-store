@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { useGetSimilarMoviesQuery } from "../../store/movies/movies.api";
 
-const SimilarMovies: React.FC = () => {
+const SimilarMovies = () => {
   const {
     docs: data = [],
     isLoading,

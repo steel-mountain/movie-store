@@ -1,11 +1,11 @@
-import { memo } from "react";
+import { FC, memo } from "react";
 import StarRatings from "react-star-ratings";
 
 interface IStarRatingsProps {
   rating: number;
 }
 
-const Rating: React.FC<IStarRatingsProps> = memo(({ rating }) => {
+const Rating: FC<IStarRatingsProps> = memo(({ rating }) => {
   return (
     <StarRatings
       rating={rating}
