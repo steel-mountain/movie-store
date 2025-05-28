@@ -1,14 +1,14 @@
 // Get Movies
 
-export interface IResponseMovies {
-  docs: IMovies[];
+export interface ResponseMovies {
+  docs: Movies[];
   total: number;
   limit: number;
   page: number;
   pages: number;
 }
 
-export interface IMovies {
+export interface Movies {
   id: number;
   name: string;
   alternativeName?: string;
@@ -45,7 +45,7 @@ export interface IMovies {
   watchability?: Watchability;
 }
 
-export interface Rating {
+interface Rating {
   kp: number;
   imdb: number;
   filmCritics: number;
@@ -53,7 +53,7 @@ export interface Rating {
   await: any;
 }
 
-export interface Votes {
+interface Votes {
   kp: number;
   imdb: number;
   filmCritics: number;
@@ -61,15 +61,15 @@ export interface Votes {
   await: number;
 }
 
-export interface Genre {
+interface Genre {
   name: string;
 }
 
-export interface Country {
+interface Country {
   name: string;
 }
 
-export interface Person {
+interface Person {
   id: number;
   photo: string;
   name?: string;
@@ -79,7 +79,7 @@ export interface Person {
   enProfession: string;
 }
 
-export interface Premiere {
+interface Premiere {
   country: any;
   russia: any;
   digital: any;
@@ -89,35 +89,35 @@ export interface Premiere {
   world: any;
 }
 
-export interface ExternalId {
+interface ExternalId {
   kpHD: string;
 }
 
-export interface Poster {
+interface Poster {
   url: string;
   previewUrl: string;
 }
 
-export interface Backdrop {
+interface Backdrop {
   url: string;
   previewUrl: string;
 }
 
-export interface ReleaseYear {
+interface ReleaseYear {
   start: number;
   end?: number;
 }
 
-export interface Watchability {
+interface Watchability {
   items: Item[];
 }
 
-export interface Item {
+interface Item {
   name: string;
   logo: Logo;
   url: string;
 }
 
-export interface Logo {
+interface Logo {
   url: string;
 }

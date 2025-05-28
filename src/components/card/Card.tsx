@@ -7,7 +7,7 @@ import {
   useAppDispatch,
   useAppSelector,
 } from "../../shared/services/hooks/useTypedSelector";
-import { IMovies } from "../../shared/types/movies";
+import { Movies } from "../../shared/types";
 import {
   addFavourites,
   removeFavourite,
@@ -15,7 +15,7 @@ import {
 import { Rating } from "../index";
 
 interface CardProps {
-  movie: IMovies;
+  movie: Movies;
   query: string;
   isFavourite?: boolean;
 }
@@ -25,7 +25,7 @@ export const Card: FC<CardProps> = ({ movie, query, isFavourite = false }) => {
 
   const theme = useAppSelector((state) => state.movies.theme);
   const favourite = useAppSelector((state) =>
-    state.movies.favourites.find((item: any) => item.id === movie.id)
+    state.movies.favourites.find((item) => item.id === movie.id)
   );
   const isAuth = Boolean(useAppSelector((state) => state.auth.data));
 

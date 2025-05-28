@@ -1,6 +1,6 @@
 // GetMovie
 
-export interface IResponseMovie {
+export interface ResponseMovie {
   id: number;
   externalId: ExternalId;
   name: string;
@@ -38,17 +38,17 @@ export interface IResponseMovie {
   updatedAt: string;
 }
 
-export interface ExternalId {
+interface ExternalId {
   kpHD: string;
 }
 
-export interface Name {
+interface Name {
   name: string;
   language?: string;
   type: string;
 }
 
-export interface Rating {
+interface Rating {
   kp: number;
   imdb: number;
   filmCritics: number;
@@ -56,7 +56,7 @@ export interface Rating {
   await: any;
 }
 
-export interface Votes {
+interface Votes {
   kp: number;
   imdb: number;
   filmCritics: number;
@@ -64,25 +64,25 @@ export interface Votes {
   await: number;
 }
 
-export interface Poster {
+interface Poster {
   url: string;
   previewUrl: string;
 }
 
-export interface Backdrop {
+interface Backdrop {
   url: string;
   previewUrl: string;
 }
 
-export interface Genre {
+interface Genre {
   name: string;
 }
 
-export interface Country {
+interface Country {
   name: string;
 }
 
-export interface Person {
+interface Person {
   id: number;
   photo: string;
   name?: string;
@@ -92,7 +92,7 @@ export interface Person {
   enProfession: string;
 }
 
-export interface Premiere {
+interface Premiere {
   country: any;
   russia: any;
   digital: any;
@@ -101,16 +101,16 @@ export interface Premiere {
   dvd: any;
 }
 
-export interface Watchability {
+interface Watchability {
   items: Item[];
 }
 
-export interface Item {
+interface Item {
   name: string;
   logo: Logo;
   url: string;
 }
 
-export interface Logo {
+interface Logo {
   url: string;
 }

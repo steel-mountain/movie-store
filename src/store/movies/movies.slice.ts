@@ -1,15 +1,15 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
-import { IMovies } from "../../shared/types/movies";
+import { Movies } from "../../shared/types";
 
 const FVK_KEY = "rfk";
 
-interface IInitialState {
-  favourites: IMovies[];
+interface InitialState {
+  favourites: Movies[];
   theme: boolean;
   newPage: number;
 }
 
-const initialState: IInitialState = {
+const initialState: InitialState = {
   favourites: JSON.parse(localStorage.getItem(FVK_KEY) ?? "[]"),
   theme: true,
   newPage: 1,
@@ -19,11 +19,11 @@ const moviesSlice = createSlice({
   name: "movies",
   initialState,
   reducers: {
-    addFavourites: (state, action: PayloadAction<IMovies>) => {
+    addFavourites: (state, action: PayloadAction<Movies>) => {
       state.favourites.push(action.payload);
       localStorage.setItem(FVK_KEY, JSON.stringify(state.favourites));
     },
-    removeFavourite: (state, action: PayloadAction<IMovies>) => {
+    removeFavourite: (state, action: PayloadAction<Movies>) => {
       state.favourites = state.favourites.filter(
         (fv) => fv.id !== action.payload.id
       );

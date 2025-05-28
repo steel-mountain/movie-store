@@ -1,7 +1,6 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { getRandom } from "../../shared/services/getRandom";
-import { IResponseMovie } from "../../shared/types/movie";
-import { IResponseMovies } from "../../shared/types/movies";
+import { ResponseMovie, ResponseMovies } from "../../shared/types";
 
 const API_KEY = "9KAR067-Q14MT1Q-K8BN9QR-B80H7FW";
 
@@ -11,28 +10,28 @@ export const moviesApi = createApi({
     baseUrl: `https://api.kinopoisk.dev/v1.4`,
   }),
   endpoints: (builder) => ({
-    getMovies: builder.query<IResponseMovies, number>({
+    getMovies: builder.query<ResponseMovies, number>({
       query: (initialPage: number) => ({
         url: `movie?page=${initialPage}&limit=10&selectFields=&notNullFields=name&notNullFields=year&notNullFields=rating.kp&notNullFields=poster.url&year=2015-2024&rating.kp=7-10&type=movie`,
         method: "GET",
         headers: { accept: "application/json", "X-API-KEY": API_KEY },
       }),
     }),
-    getSeries: builder.query<IResponseMovies, number>({
+    getSeries: builder.query<ResponseMovies, number>({
       query: (initialPage: number) => ({
         url: `movie?page=${initialPage}&limit=10&selectFields=&notNullFields=name&notNullFields=year&notNullFields=rating.kp&notNullFields=poster.url&year=2015-2024&rating.kp=8-10&type=tv-series`,
         method: "GET",
         headers: { accept: "application/json", "X-API-KEY": API_KEY },
       }),
     }),
-    getCartoons: builder.query<IResponseMovies, number>({
+    getCartoons: builder.query<ResponseMovies, number>({
       query: (initialPage: number) => ({
         url: `movie?page=${initialPage}&limit=10&selectFields=&notNullFields=name&notNullFields=year&notNullFields=rating.kp&notNullFields=poster.url&year=2015-2024&rating.kp=7-10&type=cartoon`,
         method: "GET",
         headers: { accept: "application/json", "X-API-KEY": API_KEY },
       }),
     }),
-    getMovie: builder.query<IResponseMovie, string>({
+    getMovie: builder.query<ResponseMovie, string>({
       query: (id: string) => ({
         url: `movie/${id}`,
         method: "GET",
@@ -40,7 +39,7 @@ export const moviesApi = createApi({
       }),
     }),
     getMoviesBy: builder.query<
-      IResponseMovies,
+      ResponseMovies,
       { query: string; newPage: number }
     >({
       query: ({ query, newPage }) => ({
@@ -49,7 +48,7 @@ export const moviesApi = createApi({
         headers: { accept: "application/json", "X-API-KEY": API_KEY },
       }),
     }),
-    getMovieRandom: builder.query<IResponseMovie, void>({
+    getMovieRandom: builder.query<ResponseMovie, void>({
       query: () => ({
         url: `movie/random?notNullFields=name&notNullFields=poster.url&notNullFields=description&notNullFields=rating.kp&notNullFields=alternativeName&notNullFields=watchability.items.url&rating.kp=8-10&rating.imdb=8-10`,
         method: "GET",
@@ -57,7 +56,7 @@ export const moviesApi = createApi({
       }),
       keepUnusedDataFor: 0,
     }),
-    getSimilarMovies: builder.query<IResponseMovies, void>({
+    getSimilarMovies: builder.query<ResponseMovies, void>({
       query: () => ({
         url: `movie?page=${getRandom(
           1,

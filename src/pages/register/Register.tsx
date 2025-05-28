@@ -5,7 +5,7 @@ import {
   useAppDispatch,
   useAppSelector,
 } from "../../shared/services/hooks/useTypedSelector";
-import { IUserRegister } from "../../shared/types/users";
+import { UserRegister } from "../../shared/types";
 import { fetchAuthRegister } from "../../store/movies/auth.slice";
 
 export const Register = () => {
@@ -15,9 +15,9 @@ export const Register = () => {
     register,
     handleSubmit,
     formState: { errors, isValid },
-  } = useForm<IUserRegister>({ mode: "onChange" });
+  } = useForm<UserRegister>({ mode: "onChange" });
 
-  const onSubmit = async (value: IUserRegister) => {
+  const onSubmit = async (value: UserRegister) => {
     const data = await dispatch(fetchAuthRegister(value));
     if (!data.payload) {
       return alert("Не удалось зарегистрироваться!");

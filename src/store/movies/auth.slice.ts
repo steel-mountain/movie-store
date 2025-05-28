@@ -1,6 +1,6 @@
 import { PayloadAction, createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "../../axios";
-import { IUserRegister, UserLogin } from "../../shared/types/users";
+import { UserLogin, UserRegister } from "../../shared/types";
 
 export const fetchAuthLogin = createAsyncThunk(
   "auth/fetchAuthLogin",
@@ -12,7 +12,7 @@ export const fetchAuthLogin = createAsyncThunk(
 
 export const fetchAuthRegister = createAsyncThunk(
   "auth/fetchAuthRegister",
-  async (params: IUserRegister) => {
+  async (params: UserRegister) => {
     const { data } = await axios.post("/auth/register", params);
     return data;
   }
@@ -23,12 +23,12 @@ export const fetchAuthMe = createAsyncThunk("auth/fetchAuthMe", async () => {
   return data;
 });
 
-interface IInitialState {
+interface InitialState {
   data: UserLogin | null;
   status: string;
 }
 
-const initialState: IInitialState = {
+const initialState: InitialState = {
   data: null,
   status: "loading",
 };
@@ -79,7 +79,7 @@ const authSlice = createSlice({
       })
       .addCase(
         fetchAuthRegister.fulfilled,
-        (state, action: PayloadAction<IUserRegister>) => {
+        (state, action: PayloadAction<UserRegister>) => {
           state.status = "loaded";
           state.data = action.payload;
         }
