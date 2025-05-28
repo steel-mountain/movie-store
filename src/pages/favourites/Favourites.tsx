@@ -1,5 +1,5 @@
 import { Card, SwitcherTheme } from "../../components";
-import { useAppSelector } from "../../services/useTypedSelector";
+import { useAppSelector } from "../../shared/services/hooks/useTypedSelector";
 
 const Favourites = () => {
   const { favourites } = useAppSelector((state) => state.movies);

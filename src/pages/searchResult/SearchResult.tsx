@@ -3,7 +3,7 @@ import { Card, Paginate, SwitcherTheme } from "../../components";
 import {
   useAppDispatch,
   useAppSelector,
-} from "../../services/useTypedSelector";
+} from "../../shared/services/hooks/useTypedSelector";
 import { useGetMoviesByQuery } from "../../store/movies/movies.api";
 import { changeNewPage } from "../../store/movies/movies.slice";
 

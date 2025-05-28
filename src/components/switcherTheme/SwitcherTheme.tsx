@@ -1,7 +1,7 @@
 import {
   useAppDispatch,
   useAppSelector,
-} from "../../services/useTypedSelector";
+} from "../../shared/services/hooks/useTypedSelector";
 import { changeTheme } from "../../store/movies/movies.slice";
 
 const SwitcherTheme = () => {

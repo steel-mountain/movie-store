@@ -1,7 +1,6 @@
 import { Suspense, useEffect } from "react";
 import { Route, Routes } from "react-router-dom";
 import { Loader } from "../components";
-import { useAppDispatch } from "../services/useTypedSelector";
 import { fetchAuthMe } from "../store/movies/auth.slice";
 import { CartoonsAsync as Cartoons } from "./cartoons/CartoonsAsync";
 import { FavouritesAsync as Favourites } from "./favourites/FavouritesAsync";
@@ -14,6 +13,7 @@ import Page404 from "./page404/Page404";
 import { RegisterAsync as Register } from "./register/RegisterAsync";
 import { SearchResultAsync as SearchResult } from "./searchResult/SearchResultAsync";
 import { SeriesAsync as Series } from "./series/SeriesAsync";
+import { useAppDispatch } from "../shared/services/hooks/useTypedSelector";
 
 function Pages(): JSX.Element {
   const dispatch = useAppDispatch();

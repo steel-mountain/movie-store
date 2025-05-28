@@ -1,12 +1,12 @@
 import { Dispatch, FC, SetStateAction, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import closeMenuWhite from "../../images/icon-close-menu-white.svg";
-import closeMenu from "../../images/icon-close-menu.svg";
-import searchSvg from "../../images/search.svg";
+import closeMenuWhite from "../../shared/assets/images/icon-close-menu-white.svg";
+import closeMenu from "../../shared/assets/images/icon-close-menu.svg";
+import searchSvg from "../../shared/assets/images/search.svg";
 import {
   useAppDispatch,
   useAppSelector,
-} from "../../services/useTypedSelector";
+} from "../../shared/services/hooks/useTypedSelector";
 import { logout } from "../../store/movies/auth.slice";
 import { changeNewPage } from "../../store/movies/movies.slice";
 import { Button } from "../header/Header";

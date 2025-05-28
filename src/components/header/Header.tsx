@@ -1,12 +1,12 @@
 import { FC, memo, useRef, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import mobileMenuIconWhite from "../../images/icon-menu-white.svg";
-import mobileMenuIcon from "../../images/icon-menu.svg";
-import searchSvg from "../../images/search.svg";
+import mobileMenuIconWhite from "../../shared/assets/images/icon-menu-white.svg";
+import mobileMenuIcon from "../../shared/assets/images/icon-menu.svg";
+import searchSvg from "../../shared/assets/images/search.svg";
 import {
   useAppDispatch,
   useAppSelector,
-} from "../../services/useTypedSelector";
+} from "../../shared/services/hooks/useTypedSelector";
 import { logout } from "../../store/movies/auth.slice";
 import { changeNewPage } from "../../store/movies/movies.slice";
 import MobileMenu from "../mobileMenu/MobileMenu";

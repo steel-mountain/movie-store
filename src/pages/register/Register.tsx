@@ -1,11 +1,11 @@
 import { useForm } from "react-hook-form";
 import { Navigate } from "react-router-dom";
-import avatar from "../../images/avatar.png";
-import { IUserRegister } from "../../models/models-Users";
+import avatar from "../../shared/assets/images/avatar.png";
 import {
   useAppDispatch,
   useAppSelector,
-} from "../../services/useTypedSelector";
+} from "../../shared/services/hooks/useTypedSelector";
+import { IUserRegister } from "../../shared/types/users";
 import { fetchAuthRegister } from "../../store/movies/auth.slice";
 
 const Register = () => {

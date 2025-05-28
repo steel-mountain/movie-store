@@ -1,13 +1,13 @@
 import { FC, MouseEvent, useState } from "react";
 import { Link } from "react-router-dom";
-import heartFavourite from "../../images/heart-favourite.svg";
-import heart from "../../images/heart.svg";
-import heartWhite from "../../images/heartWhite.svg";
-import { IMovies } from "../../models/models-Movies";
+import heartFavourite from "../../shared/assets/images/heart-favourite.svg";
+import heart from "../../shared/assets/images/heart.svg";
+import heartWhite from "../../shared/assets/images/heartWhite.svg";
 import {
   useAppDispatch,
   useAppSelector,
-} from "../../services/useTypedSelector";
+} from "../../shared/services/hooks/useTypedSelector";
+import { IMovies } from "../../shared/types/movies";
 import {
   addFavourites,
   removeFavourite,
@@ -25,7 +25,7 @@ const Card: FC<PropsCard> = ({ movie, query, isFavourite = false }) => {
 
   const theme = useAppSelector((state) => state.movies.theme);
   const favourite = useAppSelector((state) =>
-    state.movies.favourites.find((item) => item.id === movie.id)
+    state.movies.favourites.find((item: any) => item.id === movie.id)
   );
   const isAuth = Boolean(useAppSelector((state) => state.auth.data));
 

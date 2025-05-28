@@ -1,5 +1,5 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
-import { IMovies } from "../../models/models-Movies";
+import { IMovies } from "../../shared/types/movies";
 
 const FVK_KEY = "rfk";
 

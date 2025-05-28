@@ -1,10 +1,10 @@
 import { useForm } from "react-hook-form";
 import { Navigate } from "react-router-dom";
-import { UserLogin } from "../../models/models-Users";
 import {
   useAppDispatch,
   useAppSelector,
-} from "../../services/useTypedSelector";
+} from "../../shared/services/hooks/useTypedSelector";
+import { UserLogin } from "../../shared/types/users";
 import { fetchAuthLogin } from "../../store/movies/auth.slice";
 
 const Login = () => {
