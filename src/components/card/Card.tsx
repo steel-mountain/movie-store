@@ -12,7 +12,7 @@ import {
   addFavourites,
   removeFavourite,
 } from "../../store/movies/movies.slice";
-import Rating from "../rating/Rating";
+import { Rating } from "../index";
 
 interface CardProps {
   movie: IMovies;
@@ -20,7 +20,7 @@ interface CardProps {
   isFavourite?: boolean;
 }
 
-const Card: FC<CardProps> = ({ movie, query, isFavourite = false }) => {
+export const Card: FC<CardProps> = ({ movie, query, isFavourite = false }) => {
   const dispatch = useAppDispatch();
 
   const theme = useAppSelector((state) => state.movies.theme);
@@ -89,5 +89,3 @@ const Card: FC<CardProps> = ({ movie, query, isFavourite = false }) => {
     </div>
   );
 };
-
-export default Card;

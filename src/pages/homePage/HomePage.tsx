@@ -2,7 +2,7 @@ import { SwitcherTheme } from "../../components";
 import star from "../../shared/assets/images/star.png";
 import { useGetMovieRandomQuery } from "../../store/movies/movies.api";
 
-const HomePage = () => {
+export const HomePage = () => {
   const { data: poster, isLoading, isError } = useGetMovieRandomQuery();
 
   const watch = poster?.watchability?.items.filter((item) => item.name);
@@ -59,5 +59,3 @@ const HomePage = () => {
     </>
   );
 };
-
-export default HomePage;

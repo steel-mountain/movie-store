@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
-import Wrapper from "../wrapper/Wrapper";
+import { Wrapper } from "../index";
 
-const Footer = () => {
+export const Footer = () => {
   return (
     <Wrapper>
       <Link
@@ -16,5 +16,3 @@ const Footer = () => {
     </Wrapper>
   );
 };
-
-export default Footer;

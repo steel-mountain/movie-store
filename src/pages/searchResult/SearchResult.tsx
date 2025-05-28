@@ -7,7 +7,7 @@ import {
 import { useGetMoviesByQuery } from "../../store/movies/movies.api";
 import { changeNewPage } from "../../store/movies/movies.slice";
 
-const SearchResult = () => {
+export const SearchResult = () => {
   const [searchParams] = useSearchParams();
   const query = searchParams.get("query") || "";
 
@@ -71,5 +71,3 @@ const SearchResult = () => {
     </>
   );
 };
-
-export default SearchResult;

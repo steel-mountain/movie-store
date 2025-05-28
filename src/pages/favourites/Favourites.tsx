@@ -1,7 +1,7 @@
 import { Card, SwitcherTheme } from "../../components";
 import { useAppSelector } from "../../shared/services/hooks/useTypedSelector";
 
-const Favourites = () => {
+export const Favourites = () => {
   const { favourites } = useAppSelector((state) => state.movies);
   const isAuth = Boolean(useAppSelector((state) => state.auth.data));
 
@@ -35,5 +35,3 @@ const Favourites = () => {
     </div>
   );
 };
-
-export default Favourites;

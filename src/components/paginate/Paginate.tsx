@@ -7,7 +7,7 @@ interface PaginateProps {
   handlePageClick: ({ selected }: { selected: number }) => void;
 }
 
-const Paginate: FC<PaginateProps> = ({
+export const Paginate: FC<PaginateProps> = ({
   initialPage,
   pageCount,
   handlePageClick,
@@ -31,5 +31,3 @@ const Paginate: FC<PaginateProps> = ({
     />
   );
 };
-
-export default Paginate;

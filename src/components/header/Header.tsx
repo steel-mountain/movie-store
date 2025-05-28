@@ -9,11 +9,9 @@ import {
 } from "../../shared/services/hooks/useTypedSelector";
 import { logout } from "../../store/movies/auth.slice";
 import { changeNewPage } from "../../store/movies/movies.slice";
-import MobileMenu from "../mobileMenu/MobileMenu";
-import NavItem from "../navItem/NavItem";
-import Wrapper from "../wrapper/Wrapper";
+import { MobileMenu, NavItem, Wrapper } from "../index";
 
-const Header = () => {
+export const Header = () => {
   const [isMobileMenu, setIsMobileMenu] = useState(false);
   const navigate = useNavigate();
   const search = useRef<HTMLInputElement>(null);
@@ -132,5 +130,3 @@ export const Button: FC<IButtonProps> = memo(
     );
   }
 );
-
-export default Header;

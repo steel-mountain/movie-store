@@ -8,7 +8,7 @@ import {
 import { IUserRegister } from "../../shared/types/users";
 import { fetchAuthRegister } from "../../store/movies/auth.slice";
 
-const Register = () => {
+export const Register = () => {
   const isAuth = Boolean(useAppSelector((state) => state.auth.data));
   const dispatch = useAppDispatch();
   const {
@@ -86,5 +86,3 @@ const Register = () => {
     </section>
   );
 };
-
-export default Register;

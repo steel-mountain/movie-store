@@ -7,7 +7,7 @@ import {
 import { UserLogin } from "../../shared/types/users";
 import { fetchAuthLogin } from "../../store/movies/auth.slice";
 
-const Login = () => {
+export const Login = () => {
   const isAuth = Boolean(useAppSelector((state) => state.auth.data));
   const dispatch = useAppDispatch();
   const {
@@ -71,5 +71,3 @@ const Login = () => {
     </section>
   );
 };
-
-export default Login;

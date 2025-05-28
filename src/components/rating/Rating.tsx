@@ -5,7 +5,7 @@ interface RatingProps {
   rating: number;
 }
 
-const Rating: FC<RatingProps> = memo(({ rating }) => {
+export const Rating: FC<RatingProps> = memo(({ rating }) => {
   return (
     <StarRatings
       rating={rating}
@@ -16,5 +16,3 @@ const Rating: FC<RatingProps> = memo(({ rating }) => {
     />
   );
 });
-
-export default Rating;

@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { useGetSimilarMoviesQuery } from "../../store/movies/movies.api";
 
-const SimilarMovies = () => {
+export const SimilarMovies = () => {
   const {
     docs: data = [],
     isLoading,
@@ -62,5 +62,3 @@ const SimilarMovies = () => {
     </>
   );
 };
-
-export default SimilarMovies;

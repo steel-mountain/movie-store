@@ -10,15 +10,17 @@ import {
 import { logout } from "../../store/movies/auth.slice";
 import { changeNewPage } from "../../store/movies/movies.slice";
 import { Button } from "../header/Header";
-import NavItem from "../navItem/NavItem";
-import SwitcherTheme from "../switcherTheme/SwitcherTheme";
+import { NavItem, SwitcherTheme } from "../index";
 
 interface MobileMenuProps {
   isOpen: boolean;
   setIsMobileMenu: Dispatch<SetStateAction<boolean>>;
 }
 
-const MobileMenu: FC<MobileMenuProps> = ({ isOpen, setIsMobileMenu }) => {
+export const MobileMenu: FC<MobileMenuProps> = ({
+  isOpen,
+  setIsMobileMenu,
+}) => {
   const [search, setSearch] = useState("");
   const isAuth = Boolean(useAppSelector((state) => state.auth.data));
   const navigate = useNavigate();
@@ -108,5 +110,3 @@ const MobileMenu: FC<MobileMenuProps> = ({ isOpen, setIsMobileMenu }) => {
     </>
   );
 };
-
-export default MobileMenu;

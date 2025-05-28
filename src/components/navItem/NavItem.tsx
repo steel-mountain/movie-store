@@ -6,7 +6,7 @@ interface NavItemProps {
   link: string;
 }
 
-const NavItem: FC<NavItemProps> = memo(({ text, link }) => {
+export const NavItem: FC<NavItemProps> = memo(({ text, link }) => {
   return (
     <li
       className={`cursor-pointer text-[#BEBEBE] text-2xl font-bold hover:text-default hover:border-default transition-all duration-100`}
@@ -22,5 +22,3 @@ const NavItem: FC<NavItemProps> = memo(({ text, link }) => {
     </li>
   );
 });
-
-export default NavItem;

@@ -3,7 +3,7 @@ import { useNavigate, useSearchParams } from "react-router-dom";
 import { Card, Paginate, SwitcherTheme } from "../../components";
 import { useGetCartoonsQuery } from "../../store/movies/movies.api";
 
-const Cartoons = () => {
+export const Cartoons = () => {
   const [searchParams] = useSearchParams();
   const page = Number(searchParams.get("page") || "1");
   const navigate = useNavigate();
@@ -65,5 +65,3 @@ const Cartoons = () => {
     </>
   );
 };
-
-export default Cartoons;

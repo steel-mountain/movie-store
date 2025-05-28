@@ -1,6 +1,6 @@
 import "./loader.css";
 
-const Loader = () => {
+export const Loader = () => {
   return (
     <section className="flex justify-center items-center h-screen">
       <div className="lds-ring">
@@ -12,5 +12,3 @@ const Loader = () => {
     </section>
   );
 };
-
-export default Loader;
