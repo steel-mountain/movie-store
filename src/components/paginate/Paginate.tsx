@@ -1,13 +1,13 @@
 import { FC } from "react";
 import ReactPaginate from "react-paginate";
 
-interface IPaginateProps {
+interface PaginateProps {
   initialPage: number;
   pageCount: number;
   handlePageClick: ({ selected }: { selected: number }) => void;
 }
 
-const Paginate: FC<IPaginateProps> = ({
+const Paginate: FC<PaginateProps> = ({
   initialPage,
   pageCount,
   handlePageClick,

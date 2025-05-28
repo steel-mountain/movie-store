@@ -13,12 +13,12 @@ import { Button } from "../header/Header";
 import NavItem from "../navItem/NavItem";
 import SwitcherTheme from "../switcherTheme/SwitcherTheme";
 
-interface IMobileMenu {
+interface MobileMenuProps {
   isOpen: boolean;
   setIsMobileMenu: Dispatch<SetStateAction<boolean>>;
 }
 
-const MobileMenu: FC<IMobileMenu> = ({ isOpen, setIsMobileMenu }) => {
+const MobileMenu: FC<MobileMenuProps> = ({ isOpen, setIsMobileMenu }) => {
   const [search, setSearch] = useState("");
   const isAuth = Boolean(useAppSelector((state) => state.auth.data));
   const navigate = useNavigate();

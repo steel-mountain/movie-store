@@ -1,11 +1,11 @@
 import { FC, memo } from "react";
 import StarRatings from "react-star-ratings";
 
-interface IStarRatingsProps {
+interface RatingProps {
   rating: number;
 }
 
-const Rating: FC<IStarRatingsProps> = memo(({ rating }) => {
+const Rating: FC<RatingProps> = memo(({ rating }) => {
   return (
     <StarRatings
       rating={rating}

@@ -14,13 +14,13 @@ import {
 } from "../../store/movies/movies.slice";
 import Rating from "../rating/Rating";
 
-interface PropsCard {
+interface CardProps {
   movie: IMovies;
   query: string;
   isFavourite?: boolean;
 }
 
-const Card: FC<PropsCard> = ({ movie, query, isFavourite = false }) => {
+const Card: FC<CardProps> = ({ movie, query, isFavourite = false }) => {
   const dispatch = useAppDispatch();
 
   const theme = useAppSelector((state) => state.movies.theme);
