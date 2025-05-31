@@ -1,6 +1,6 @@
 import { useForm } from "react-hook-form";
 import { Navigate } from "react-router-dom";
-import avatar from "../../shared/assets/images/avatar.png";
+import { avatar } from "../../shared/assets";
 import {
   useAppDispatch,
   useAppSelector,

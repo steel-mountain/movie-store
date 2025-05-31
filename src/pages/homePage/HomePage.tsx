@@ -1,5 +1,5 @@
 import { SwitcherTheme } from "../../components";
-import star from "../../shared/assets/images/star.png";
+import { star } from "../../shared/assets";
 import { useGetMovieRandomQuery } from "../../store/movies/movies.api";
 
 export const HomePage = () => {

@@ -1,12 +1,11 @@
 import { Dispatch, FC, SetStateAction, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import closeMenuWhite from "../../shared/assets/images/icon-close-menu-white.svg";
-import closeMenu from "../../shared/assets/images/icon-close-menu.svg";
-import searchSvg from "../../shared/assets/images/search.svg";
+import { CloseMenu, CloseMenuWhite, Search } from "../../shared/assets";
 import {
   useAppDispatch,
   useAppSelector,
 } from "../../shared/services/hooks/useTypedSelector";
+import { Icon } from "../../shared/ui/Icon/Icon";
 import { logout } from "../../store/movies/auth.slice";
 import { changeNewPage } from "../../store/movies/movies.slice";
 import { Button } from "../header/Header";
@@ -57,11 +56,11 @@ export const MobileMenu: FC<MobileMenuProps> = ({
         } dark:bg-[#0B0C0E] block ll:hidden`}
       >
         <div className="flex justify-end mt-[25px] mr-4">
-          <img
+          <Icon
+            Svg={theme ? CloseMenu : CloseMenuWhite}
             onClick={() => setIsMobileMenu(!isOpen)}
-            className="w-[25px] h-[25px] cursor-pointer"
-            src={theme ? closeMenu : closeMenuWhite}
-            alt="menu"
+            cursor="pointer"
+            className="w-[25px] h-[25px]"
           />
         </div>
         <nav className=" my-8 mx-5 space-y-5 text-lg w-full">
@@ -101,7 +100,7 @@ export const MobileMenu: FC<MobileMenuProps> = ({
               onClick={handleSearch}
               className="h-[50px] w-[50px] bg-[#F4ED48] rounded flex justify-center items-center cursor-pointer"
             >
-              <img className="h-[25px] w-[25px]" src={searchSvg} alt="search" />
+              <Icon Svg={Search} className="h-[25px] w-[25px]" />
             </button>
           </div>
           <SwitcherTheme />

@@ -1,12 +1,11 @@
 import { FC, memo, useRef, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import mobileMenuIconWhite from "../../shared/assets/images/icon-menu-white.svg";
-import mobileMenuIcon from "../../shared/assets/images/icon-menu.svg";
-import searchSvg from "../../shared/assets/images/search.svg";
+import { mobileMenu, mobileMenuWhite, Search } from "../../shared/assets";
 import {
   useAppDispatch,
   useAppSelector,
 } from "../../shared/services/hooks/useTypedSelector";
+import { Icon } from "../../shared/ui/Icon/Icon";
 import { logout } from "../../store/movies/auth.slice";
 import { changeNewPage } from "../../store/movies/movies.slice";
 import { MobileMenu, NavItem, Wrapper } from "../index";
@@ -58,10 +57,7 @@ export const Header = () => {
             onClick={() => setIsMobileMenu(!isMobileMenu)}
             className="block ll:hidden cursor-pointer"
           >
-            <img
-              src={theme ? mobileMenuIcon : mobileMenuIconWhite}
-              alt="menu"
-            />
+            <Icon Svg={theme ? mobileMenu : mobileMenuWhite} />
           </div>
           <MobileMenu isOpen={isMobileMenu} setIsMobileMenu={setIsMobileMenu} />
         </div>
@@ -96,11 +92,7 @@ export const Header = () => {
                 onClick={handleSearch}
                 className="h-[50px] w-[50px] bg-[#F4ED48] rounded flex justify-center items-center cursor-pointer"
               >
-                <img
-                  className="h-[25px] w-[25px]"
-                  src={searchSvg}
-                  alt="search"
-                />
+                <Icon Svg={Search} className="h-[25px] w-[25px]" />
               </button>
             </div>
           </div>
@@ -110,13 +102,13 @@ export const Header = () => {
   );
 };
 
-interface IButtonProps {
+interface ButtonProps {
   text: string;
   isAuth?: boolean;
   onClickLogout?: () => void;
 }
 
-export const Button: FC<IButtonProps> = memo(
+export const Button: FC<ButtonProps> = memo(
   ({ text, isAuth, onClickLogout }) => {
     return (
       <button

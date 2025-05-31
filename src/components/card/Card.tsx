@@ -1,13 +1,12 @@
 import { FC, MouseEvent, useState } from "react";
 import { Link } from "react-router-dom";
-import heartFavourite from "../../shared/assets/images/heart-favourite.svg";
-import heart from "../../shared/assets/images/heart.svg";
-import heartWhite from "../../shared/assets/images/heartWhite.svg";
+import { Heart, HeartFavourite, HeartWhite } from "../../shared/assets";
 import {
   useAppDispatch,
   useAppSelector,
 } from "../../shared/services/hooks/useTypedSelector";
 import { Movies } from "../../shared/types";
+import { Icon } from "../../shared/ui/Icon/Icon";
 import {
   addFavourites,
   removeFavourite,
@@ -79,10 +78,11 @@ export const Card: FC<CardProps> = ({ movie, query, isFavourite = false }) => {
               isFavourite ? handlerAddOrRemoveMovie : handlerIsOrFalseFav
             }
           >
-            <img
-              src={isFav ? heartFavourite : theme ? heart : heartWhite}
-              alt="favourite"
-            />
+            {isFav ? (
+              <Icon Svg={HeartFavourite} />
+            ) : (
+              <Icon Svg={theme ? Heart : HeartWhite} />
+            )}
           </button>
         )}
       </div>
