@@ -1,19 +1,19 @@
-import { useAppDispatch, useAppSelector } from "../../shared/hooks/useRedux";
-import { changeTheme } from "../../shared/store/slices/movies/movies.slice";
+import { useAppDispatch, useAppSelector } from "../../shared/hooks/useRedux"
+import { changeTheme } from "../../shared/store/slices/movies/movies.slice"
 
 export const SwitcherTheme = () => {
-  const theme = useAppSelector((state) => state.movies.theme);
-  const dispatch = useAppDispatch();
+  const theme = useAppSelector((state) => state.movies.theme)
+  const dispatch = useAppDispatch()
 
   const handlerChangeTheme = () => {
     if (theme) {
-      dispatch(changeTheme(!theme));
-      document.body.classList.add("dark");
+      dispatch(changeTheme(!theme))
+      document.body.classList.add("dark")
     } else {
-      dispatch(changeTheme(!theme));
-      document.body.classList.remove("dark");
+      dispatch(changeTheme(!theme))
+      document.body.classList.remove("dark")
     }
-  };
+  }
 
   return (
     <div className="mr-[10px]">
@@ -30,5 +30,5 @@ export const SwitcherTheme = () => {
         />
       </label>
     </div>
-  );
-};
+  )
+}

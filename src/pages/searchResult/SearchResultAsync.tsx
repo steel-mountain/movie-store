@@ -1,7 +1,7 @@
-import { lazy } from "react";
+import { lazy } from "react"
 
 export const SearchResult = lazy(() =>
-  import(/*webpackChunkName: "[SearchResult]"*/ "./SearchResult").then(
-    (res) => ({ default: res.SearchResult })
-  )
-);
+  import(/*webpackChunkName: "[SearchResult]"*/ "./SearchResult").then((res) => ({
+    default: res.SearchResult,
+  })),
+)

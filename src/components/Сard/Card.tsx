@@ -1,55 +1,48 @@
-import { FC, MouseEvent, useState } from "react";
-import { Link } from "react-router-dom";
-import { Heart, HeartFavourite, HeartWhite } from "../../shared/assets";
-import { useAppDispatch, useAppSelector } from "../../shared/hooks/useRedux";
-import {
-  addFavourites,
-  removeFavourite,
-} from "../../shared/store/slices/movies/movies.slice";
-import { Movies } from "../../shared/types";
-import { Icon } from "../../shared/ui/Icon/Icon";
-import { Rating } from "../index";
+import { FC, MouseEvent, useState } from "react"
+import { Link } from "react-router-dom"
+import { Heart, HeartFavourite, HeartWhite } from "../../shared/assets"
+import { useAppDispatch, useAppSelector } from "../../shared/hooks/useRedux"
+import { addFavourites, removeFavourite } from "../../shared/store/slices/movies/movies.slice"
+import { Movies } from "../../shared/types"
+import { Icon } from "../../shared/ui/Icon/Icon"
+import { Rating } from "../index"
 
 interface CardProps {
-  movie: Movies;
-  query: string;
-  isFavourite?: boolean;
+  movie: Movies
+  query: string
+  isFavourite?: boolean
 }
 
 export const Card: FC<CardProps> = ({ movie, query, isFavourite = false }) => {
-  const dispatch = useAppDispatch();
+  const dispatch = useAppDispatch()
 
-  const theme = useAppSelector((state) => state.movies.theme);
-  const favourite = useAppSelector((state) =>
-    state.movies.favourites.find((item) => item.id === movie.id)
-  );
-  const isAuth = Boolean(useAppSelector((state) => state.auth.data));
+  const theme = useAppSelector((state) => state.movies.theme)
+  const favourite = useAppSelector((state) => state.movies.favourites.find((item) => item.id === movie.id))
+  const isAuth = Boolean(useAppSelector((state) => state.auth.data))
 
-  const [isFav, setIsFav] = useState(
-    typeof favourite === "object" ? true : false
-  );
+  const [isFav, setIsFav] = useState(typeof favourite === "object" ? true : false)
 
   const handlerIsOrFalseFav = (e: MouseEvent<HTMLButtonElement>) => {
-    e.preventDefault();
+    e.preventDefault()
 
     if (isFav) {
-      setIsFav(false);
-      dispatch(removeFavourite(movie));
+      setIsFav(false)
+      dispatch(removeFavourite(movie))
     } else {
-      setIsFav(true);
-      dispatch(addFavourites(movie));
+      setIsFav(true)
+      dispatch(addFavourites(movie))
     }
-  };
+  }
 
   const handlerAddOrRemoveMovie = (e: MouseEvent<HTMLButtonElement>) => {
-    e.preventDefault();
+    e.preventDefault()
 
     if (isFav) {
-      dispatch(removeFavourite(movie));
+      dispatch(removeFavourite(movie))
     } else {
-      dispatch(addFavourites(movie));
+      dispatch(addFavourites(movie))
     }
-  };
+  }
 
   return (
     <div className="w-[260px] min-h-[480px]">
@@ -71,18 +64,12 @@ export const Card: FC<CardProps> = ({ movie, query, isFavourite = false }) => {
         {isAuth && (
           <button
             className="block w-[25px] h-[25px]"
-            onClick={
-              isFavourite ? handlerAddOrRemoveMovie : handlerIsOrFalseFav
-            }
+            onClick={isFavourite ? handlerAddOrRemoveMovie : handlerIsOrFalseFav}
           >
-            {isFav ? (
-              <Icon Svg={HeartFavourite} />
-            ) : (
-              <Icon Svg={theme ? Heart : HeartWhite} />
-            )}
+            {isFav ? <Icon Svg={HeartFavourite} /> : <Icon Svg={theme ? Heart : HeartWhite} />}
           </button>
         )}
       </div>
     </div>
-  );
-};
+  )
+}

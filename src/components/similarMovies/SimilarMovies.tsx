@@ -1,5 +1,5 @@
-import { Link } from "react-router-dom";
-import { useGetSimilarMoviesQuery } from "../../shared/store/slices/movies/movies.api";
+import { Link } from "react-router-dom"
+import { useGetSimilarMoviesQuery } from "../../shared/store/slices/movies/movies.api"
 
 export const SimilarMovies = () => {
   const {
@@ -14,7 +14,7 @@ export const SimilarMovies = () => {
       isError,
       isFetching,
     }),
-  });
+  })
 
   const getSimilarMovies = data?.map((movie) => {
     return (
@@ -29,28 +29,22 @@ export const SimilarMovies = () => {
           className=" w-[200px] h-[400px] object-cover rounded-lg hover:opacity-40"
         />
         <h3 className="text-lg font-semibold text-neutral-700 dark:text-white">
-          {movie.name.length < 17
-            ? movie.name
-            : `${movie.name.slice(0, 17)}...`}
+          {movie.name.length < 17 ? movie.name : `${movie.name.slice(0, 17)}...`}
         </h3>
       </Link>
-    );
-  });
+    )
+  })
 
-  const error = isError && (
-    <p className="text-center text-4xl dark:text-white">Ошибка доступа...</p>
-  );
+  const error = isError && <p className="text-center text-4xl dark:text-white">Ошибка доступа...</p>
 
   const loading = isLoading && isFetching && (
     <p className="text-center text-4xl dark:text-white">Loading...</p>
-  );
+  )
 
   return (
     <>
       <section>
-        <h2 className="text-3xl font-bold text-neutral-700 mb-[25px] dark:text-white">
-          Смотрите также
-        </h2>
+        <h2 className="text-3xl font-bold text-neutral-700 mb-[25px] dark:text-white">Смотрите также</h2>
         {error}
         {loading}
         {data?.length > 0 && (
@@ -60,5 +54,5 @@ export const SimilarMovies = () => {
         )}
       </section>
     </>
-  );
-};
+  )
+}

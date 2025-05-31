@@ -1,5 +1,5 @@
-import { Outlet } from "react-router-dom";
-import { Footer, Header, Wrapper } from "../../components";
+import { Outlet } from "react-router-dom"
+import { Footer, Header, Wrapper } from "../../components"
 
 export const Layout = () => {
   return (
@@ -16,8 +16,8 @@ export const Layout = () => {
         <Footer />
       </footer>
     </div>
-  );
-};
+  )
+}
 
 // Если убрать главного div flex flex-col и c main flex,
 // то footer будет прижимать к main, но в других местах ломаться верстка будет

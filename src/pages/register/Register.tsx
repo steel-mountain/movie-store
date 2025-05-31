@@ -1,38 +1,36 @@
-import { useForm } from "react-hook-form";
-import { Navigate } from "react-router-dom";
-import { avatar } from "../../shared/assets";
-import { useAppDispatch, useAppSelector } from "../../shared/hooks/useRedux";
-import { fetchAuthRegister } from "../../shared/store/slices/auth/auth.slice";
-import { UserRegister } from "../../shared/types";
+import { useForm } from "react-hook-form"
+import { Navigate } from "react-router-dom"
+import { avatar } from "../../shared/assets"
+import { useAppDispatch, useAppSelector } from "../../shared/hooks/useRedux"
+import { fetchAuthRegister } from "../../shared/store/slices/auth/auth.slice"
+import { UserRegister } from "../../shared/types"
 
 export const Register = () => {
-  const isAuth = Boolean(useAppSelector((state) => state.auth.data));
-  const dispatch = useAppDispatch();
+  const isAuth = Boolean(useAppSelector((state) => state.auth.data))
+  const dispatch = useAppDispatch()
   const {
     register,
     handleSubmit,
     formState: { errors, isValid },
-  } = useForm<UserRegister>({ mode: "onChange" });
+  } = useForm<UserRegister>({ mode: "onChange" })
 
   const onSubmit = async (value: UserRegister) => {
-    const data = await dispatch(fetchAuthRegister(value));
+    const data = await dispatch(fetchAuthRegister(value))
     if (!data.payload) {
-      return alert("Не удалось зарегистрироваться!");
+      return alert("Не удалось зарегистрироваться!")
     }
     if ("token" in data.payload) {
-      window.localStorage.setItem("token", data.payload.token);
+      window.localStorage.setItem("token", data.payload.token)
     }
-  };
+  }
 
   if (isAuth) {
-    return <Navigate to="/" />;
+    return <Navigate to="/" />
   }
 
   return (
     <section className="bg-white max-w-[400px] mx-auto p-[50px] rounded-xl">
-      <h1 className="text-center text-2xl font-bold text-gray-800 mb-3">
-        Создание аккаунта
-      </h1>
+      <h1 className="text-center text-2xl font-bold text-gray-800 mb-3">Создание аккаунта</h1>
       <img className="w-[120] h-[120px] mx-auto" src={avatar} alt="avatar" />
       <form onSubmit={handleSubmit(onSubmit)}>
         <input
@@ -73,13 +71,11 @@ export const Register = () => {
         <button
           disabled={!isValid}
           type="submit"
-          className={`mt-5 text-white bg-default w-full p-[8px] ${
-            !isValid ? "bg-opacity-50" : null
-          }`}
+          className={`mt-5 text-white bg-default w-full p-[8px] ${!isValid ? "bg-opacity-50" : null}`}
         >
           Зарегистрироваться
         </button>
       </form>
     </section>
-  );
-};
+  )
+}

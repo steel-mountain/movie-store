@@ -1,15 +1,15 @@
-import { useSearchParams } from "react-router-dom";
-import { Card, Paginate, SwitcherTheme } from "../../components";
-import { useAppDispatch, useAppSelector } from "../../shared/hooks/useRedux";
-import { useGetMoviesByQuery } from "../../shared/store/slices/movies/movies.api";
-import { changeNewPage } from "../../shared/store/slices/movies/movies.slice";
+import { useSearchParams } from "react-router-dom"
+import { Card, Paginate, SwitcherTheme } from "../../components"
+import { useAppDispatch, useAppSelector } from "../../shared/hooks/useRedux"
+import { useGetMoviesByQuery } from "../../shared/store/slices/movies/movies.api"
+import { changeNewPage } from "../../shared/store/slices/movies/movies.slice"
 
 export const SearchResult = () => {
-  const [searchParams] = useSearchParams();
-  const query = searchParams.get("query") || "";
+  const [searchParams] = useSearchParams()
+  const query = searchParams.get("query") || ""
 
-  const { newPage } = useAppSelector((state) => state.movies);
-  const dispatch = useAppDispatch();
+  const { newPage } = useAppSelector((state) => state.movies)
+  const dispatch = useAppDispatch()
 
   const {
     docs: data = [],
@@ -30,41 +30,31 @@ export const SearchResult = () => {
         isError,
         isFetching,
       }),
-    }
-  );
+    },
+  )
 
   const handlePageClick = ({ selected }: { selected: number }) => {
-    dispatch(changeNewPage(selected + 1));
-  };
+    dispatch(changeNewPage(selected + 1))
+  }
 
   const movies = data?.map((movie, i) => {
-    return <Card query={`/search/${movie.id}`} key={i} movie={movie} />;
-  });
+    return <Card query={`/search/${movie.id}`} key={i} movie={movie} />
+  })
 
   return (
     <>
       <div className="flex flex-wrap justify-center gap-[40px] relative">
-        {isError && (
-          <p className="text-4xl dark:text-white">Ошибка доступа...</p>
-        )}
-        {isLoading || isFetching ? (
-          <p className="text-4xl dark:text-white">Loading...</p>
-        ) : (
-          movies
-        )}
+        {isError && <p className="text-4xl dark:text-white">Ошибка доступа...</p>}
+        {isLoading || isFetching ? <p className="text-4xl dark:text-white">Loading...</p> : movies}
         <div className="absolute bottom-48 left-[-130px]">
           <SwitcherTheme />
         </div>
       </div>
       <div>
         {movies?.length !== 0 && !isFetching ? (
-          <Paginate
-            initialPage={page! - 1}
-            pageCount={pageCount}
-            handlePageClick={handlePageClick}
-          />
+          <Paginate initialPage={page! - 1} pageCount={pageCount} handlePageClick={handlePageClick} />
         ) : null}
       </div>
     </>
-  );
-};
+  )
+}

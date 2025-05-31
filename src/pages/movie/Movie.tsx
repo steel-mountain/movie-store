@@ -1,46 +1,36 @@
-import { FC } from "react";
-import { useNavigate, useParams } from "react-router-dom";
-import { SimilarMovies } from "../../components";
-import { useGetMovieQuery } from "../../shared/store/slices/movies/movies.api";
+import { FC } from "react"
+import { useNavigate, useParams } from "react-router-dom"
+import { SimilarMovies } from "../../components"
+import { useGetMovieQuery } from "../../shared/store/slices/movies/movies.api"
 
 export const Movie = () => {
-  const { id = "" } = useParams();
+  const { id = "" } = useParams()
 
-  return <MovieContent key={id} id={id} />;
-};
+  return <MovieContent key={id} id={id} />
+}
 
 const MovieContent: FC<{ id: string }> = ({ id }) => {
-  const navigate = useNavigate();
-  const { data: movie, isLoading, isError } = useGetMovieQuery(id);
+  const navigate = useNavigate()
+  const { data: movie, isLoading, isError } = useGetMovieQuery(id)
 
-  const name = movie?.name ? movie.name : "Название отсутствует";
-  const img = movie?.poster?.url ? movie.poster.url : "Изображение отсутствует";
-  const description = movie?.description
-    ? movie.description
-    : "Описание отсутствует";
-  const year = movie?.year ? movie.year : "Год выхода отсутствует";
+  const name = movie?.name ? movie.name : "Название отсутствует"
+  const img = movie?.poster?.url ? movie.poster.url : "Изображение отсутствует"
+  const description = movie?.description ? movie.description : "Описание отсутствует"
+  const year = movie?.year ? movie.year : "Год выхода отсутствует"
   const country =
     movie?.countries && movie?.countries.length !== 0
       ? movie?.countries.map((item) => item.name).join(", ")
-      : "Страна не указана";
-  const runtime = movie?.movieLength
-    ? movie.movieLength
-    : "Продолжительность не указана";
-  const kp = movie?.rating?.kp ? movie.rating.kp : null;
-  const imdb = movie?.rating?.imdb ? movie.rating.imdb : null;
+      : "Страна не указана"
+  const runtime = movie?.movieLength ? movie.movieLength : "Продолжительность не указана"
+  const kp = movie?.rating?.kp ? movie.rating.kp : null
+  const imdb = movie?.rating?.imdb ? movie.rating.imdb : null
   const genres =
-    movie?.genres?.length !== 0
-      ? movie?.genres.map((item) => item.name).join(", ")
-      : "Жанр не указан";
-  const watch = movie?.watchability?.items.filter((item) => item.name);
+    movie?.genres?.length !== 0 ? movie?.genres.map((item) => item.name).join(", ") : "Жанр не указан"
+  const watch = movie?.watchability?.items.filter((item) => item.name)
 
   return (
     <>
-      {isError && (
-        <p className="text-center text-4xl dark:text-white">
-          Ошибка доступа...
-        </p>
-      )}
+      {isError && <p className="text-center text-4xl dark:text-white">Ошибка доступа...</p>}
 
       <section className="mx-[40px] mb-[20px] relative">
         {isLoading ? (
@@ -61,9 +51,7 @@ const MovieContent: FC<{ id: string }> = ({ id }) => {
                   alt={name}
                 />
                 <div>
-                  <h1 className="text-3xl font-bold text-neutral-700 mb-[10px] dark:text-white">
-                    {name}
-                  </h1>
+                  <h1 className="text-3xl font-bold text-neutral-700 mb-[10px] dark:text-white">{name}</h1>
                   <p className="text-lg dark:text-white">
                     <span className="font-bold">Год выхода: </span>
                     {year}
@@ -88,9 +76,7 @@ const MovieContent: FC<{ id: string }> = ({ id }) => {
                     )}
                     {imdb !== null && <div>IMDB {imdb}</div>}
                   </div>
-                  <p className="text-xl mb-[15px] dark:text-white">
-                    {description}
-                  </p>
+                  <p className="text-xl mb-[15px] dark:text-white">{description}</p>
                   {watch?.map((item, i) => (
                     <a
                       href={item.url}
@@ -110,5 +96,5 @@ const MovieContent: FC<{ id: string }> = ({ id }) => {
         )}
       </section>
     </>
-  );
-};
+  )
+}

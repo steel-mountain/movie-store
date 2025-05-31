@@ -1,9 +1,9 @@
-import { FC, memo } from "react";
-import { NavLink } from "react-router-dom";
+import { FC, memo } from "react"
+import { NavLink } from "react-router-dom"
 
 interface NavItemProps {
-  text: string;
-  link: string;
+  text: string
+  link: string
 }
 
 export const NavItem: FC<NavItemProps> = memo(({ text, link }) => {
@@ -13,12 +13,10 @@ export const NavItem: FC<NavItemProps> = memo(({ text, link }) => {
     >
       <NavLink
         to={link}
-        className={({ isActive }) =>
-          isActive ? "border-b-4 text-default border-default" : ""
-        }
+        className={({ isActive }) => (isActive ? "border-b-4 text-default border-default" : "")}
       >
         {text}
       </NavLink>
     </li>
-  );
-});
+  )
+})

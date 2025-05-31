@@ -1,4 +1,4 @@
-import "./loader.css";
+import "./loader.css"
 
 export const Loader = () => {
   return (
@@ -10,5 +10,5 @@ export const Loader = () => {
         <div></div>
       </div>
     </section>
-  );
-};
+  )
+}

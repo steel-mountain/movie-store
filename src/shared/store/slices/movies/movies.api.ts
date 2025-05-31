@@ -1,7 +1,7 @@
-import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import { API_KEY } from "../../../constants";
-import { getRandomNumber } from "../../../lib/getRandomNumber";
-import { ResponseMovie, ResponseMovies } from "../../../types";
+import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react"
+import { API_KEY } from "../../../constants"
+import { getRandomNumber } from "../../../lib/getRandomNumber"
+import { ResponseMovie, ResponseMovies } from "../../../types"
 
 export const moviesApi = createApi({
   reducerPath: "movieApi",
@@ -37,10 +37,7 @@ export const moviesApi = createApi({
         headers: { accept: "application/json", "X-API-KEY": API_KEY },
       }),
     }),
-    getMoviesBy: builder.query<
-      ResponseMovies,
-      { query: string; newPage: number }
-    >({
+    getMoviesBy: builder.query<ResponseMovies, { query: string; newPage: number }>({
       query: ({ query, newPage }) => ({
         url: `movie/search?page=${newPage}&limit=10&query=${query}`,
         method: "GET",
@@ -59,7 +56,7 @@ export const moviesApi = createApi({
       query: () => ({
         url: `movie?page=${getRandomNumber(
           1,
-          265
+          265,
         )}&limit=6&selectFields=&notNullFields=name&notNullFields=year&notNullFields=rating.kp&notNullFields=poster.url&year=2015-2024&rating.kp=7-10&type=movie`,
         method: "GET",
         headers: { accept: "application/json", "X-API-KEY": API_KEY },
@@ -67,7 +64,7 @@ export const moviesApi = createApi({
       keepUnusedDataFor: 0,
     }),
   }),
-});
+})
 
 export const {
   useGetMoviesQuery,
@@ -77,4 +74,4 @@ export const {
   useGetMoviesByQuery,
   useGetMovieRandomQuery,
   useGetSimilarMoviesQuery,
-} = moviesApi;
+} = moviesApi

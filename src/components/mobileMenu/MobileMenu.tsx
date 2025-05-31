@@ -1,43 +1,40 @@
-import { Dispatch, FC, SetStateAction, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import { CloseMenu, CloseMenuWhite, Search } from "../../shared/assets";
-import { useAppDispatch, useAppSelector } from "../../shared/hooks/useRedux";
-import { logout } from "../../shared/store/slices/auth/auth.slice";
-import { changeNewPage } from "../../shared/store/slices/movies/movies.slice";
-import { Icon } from "../../shared/ui/Icon/Icon";
-import { Button } from "../Header/Header";
-import { NavItem, SwitcherTheme } from "../index";
+import { Dispatch, FC, SetStateAction, useState } from "react"
+import { Link, useNavigate } from "react-router-dom"
+import { CloseMenu, CloseMenuWhite, Search } from "../../shared/assets"
+import { useAppDispatch, useAppSelector } from "../../shared/hooks/useRedux"
+import { logout } from "../../shared/store/slices/auth/auth.slice"
+import { changeNewPage } from "../../shared/store/slices/movies/movies.slice"
+import { Icon } from "../../shared/ui/Icon/Icon"
+import { Button } from "../Header/Header"
+import { NavItem, SwitcherTheme } from "../index"
 
 interface MobileMenuProps {
-  isOpen: boolean;
-  setIsMobileMenu: Dispatch<SetStateAction<boolean>>;
+  isOpen: boolean
+  setIsMobileMenu: Dispatch<SetStateAction<boolean>>
 }
 
-export const MobileMenu: FC<MobileMenuProps> = ({
-  isOpen,
-  setIsMobileMenu,
-}) => {
-  const [search, setSearch] = useState("");
-  const isAuth = Boolean(useAppSelector((state) => state.auth.data));
-  const navigate = useNavigate();
+export const MobileMenu: FC<MobileMenuProps> = ({ isOpen, setIsMobileMenu }) => {
+  const [search, setSearch] = useState("")
+  const isAuth = Boolean(useAppSelector((state) => state.auth.data))
+  const navigate = useNavigate()
 
-  const dispatch = useAppDispatch();
-  const theme = useAppSelector((state) => state.movies.theme);
+  const dispatch = useAppDispatch()
+  const theme = useAppSelector((state) => state.movies.theme)
 
   const handleSearch = () => {
     if (search.trim()) {
-      navigate(`/search?query=${search}`);
-      dispatch(changeNewPage(1));
+      navigate(`/search?query=${search}`)
+      dispatch(changeNewPage(1))
     } else {
-      navigate("/movies");
+      navigate("/movies")
     }
-  };
+  }
 
   const onClickLogout = () => {
     if (window.confirm("Вы действительно хотите выйти?")) {
-      dispatch(logout());
+      dispatch(logout())
     }
-  };
+  }
 
   return (
     <>
@@ -104,5 +101,5 @@ export const MobileMenu: FC<MobileMenuProps> = ({
         </nav>
       </div>
     </>
-  );
-};
+  )
+}

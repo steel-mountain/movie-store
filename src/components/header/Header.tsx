@@ -1,45 +1,42 @@
-import { FC, memo, useRef, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import { mobileMenu, mobileMenuWhite, Search } from "../../shared/assets";
-import { useAppDispatch, useAppSelector } from "../../shared/hooks/useRedux";
-import { logout } from "../../shared/store/slices/auth/auth.slice";
-import { changeNewPage } from "../../shared/store/slices/movies/movies.slice";
-import { Icon } from "../../shared/ui/Icon/Icon";
-import { MobileMenu, NavItem, Wrapper } from "../index";
+import { FC, memo, useRef, useState } from "react"
+import { Link, useNavigate } from "react-router-dom"
+import { mobileMenu, mobileMenuWhite, Search } from "../../shared/assets"
+import { useAppDispatch, useAppSelector } from "../../shared/hooks/useRedux"
+import { logout } from "../../shared/store/slices/auth/auth.slice"
+import { changeNewPage } from "../../shared/store/slices/movies/movies.slice"
+import { Icon } from "../../shared/ui/Icon/Icon"
+import { MobileMenu, NavItem, Wrapper } from "../index"
 
 export const Header = () => {
-  const [isMobileMenu, setIsMobileMenu] = useState(false);
-  const navigate = useNavigate();
-  const search = useRef<HTMLInputElement>(null);
+  const [isMobileMenu, setIsMobileMenu] = useState(false)
+  const navigate = useNavigate()
+  const search = useRef<HTMLInputElement>(null)
 
-  const isAuth = Boolean(useAppSelector((state) => state.auth.data));
-  const theme = useAppSelector((state) => state.movies.theme);
-  const dispatch = useAppDispatch();
+  const isAuth = Boolean(useAppSelector((state) => state.auth.data))
+  const theme = useAppSelector((state) => state.movies.theme)
+  const dispatch = useAppDispatch()
 
   const handleSearch = () => {
     if (search.current?.value.trim()) {
-      navigate(`/search?query=${search.current?.value}`);
-      dispatch(changeNewPage(1));
+      navigate(`/search?query=${search.current?.value}`)
+      dispatch(changeNewPage(1))
     } else {
-      navigate("/movies");
+      navigate("/movies")
     }
-  };
+  }
 
   const onClickLogout = () => {
     if (window.confirm("Вы действительно хотите выйти?")) {
-      dispatch(logout());
-      window.localStorage.removeItem("token");
+      dispatch(logout())
+      window.localStorage.removeItem("token")
     }
-  };
+  }
 
   return (
     <Wrapper>
       <div className="flex items-center justify-between w-full">
         <div className="flex items-center justify-between w-full ll:w-auto">
-          <Link
-            to="/"
-            className="text-[#535353] hover:text-default font-bold text-3xl dark:text-[#FBFDFC]"
-          >
+          <Link to="/" className="text-[#535353] hover:text-default font-bold text-3xl dark:text-[#FBFDFC]">
             Movie-store
           </Link>
           <nav className="ml-8 hidden ll:block">
@@ -50,10 +47,7 @@ export const Header = () => {
               <NavItem text="Избранное" link="/favourites" />
             </ul>
           </nav>
-          <div
-            onClick={() => setIsMobileMenu(!isMobileMenu)}
-            className="block ll:hidden cursor-pointer"
-          >
+          <div onClick={() => setIsMobileMenu(!isMobileMenu)} className="block ll:hidden cursor-pointer">
             <Icon Svg={theme ? mobileMenu : mobileMenuWhite} />
           </div>
           <MobileMenu isOpen={isMobileMenu} setIsMobileMenu={setIsMobileMenu} />
@@ -96,26 +90,24 @@ export const Header = () => {
         </div>
       </div>
     </Wrapper>
-  );
-};
-
-interface ButtonProps {
-  text: string;
-  isAuth?: boolean;
-  onClickLogout?: () => void;
+  )
 }
 
-export const Button: FC<ButtonProps> = memo(
-  ({ text, isAuth, onClickLogout }) => {
-    return (
-      <button
-        onClick={onClickLogout}
-        className={`h-[50px] p-[20px] text-default border rounded-lg border-default flex items-center text text-lg font-bold hover:text-white hover:bg-default ${
-          isAuth && "bg-red-600 text-white border-none hover:bg-red-600"
-        }`}
-      >
-        {text}
-      </button>
-    );
-  }
-);
+interface ButtonProps {
+  text: string
+  isAuth?: boolean
+  onClickLogout?: () => void
+}
+
+export const Button: FC<ButtonProps> = memo(({ text, isAuth, onClickLogout }) => {
+  return (
+    <button
+      onClick={onClickLogout}
+      className={`h-[50px] p-[20px] text-default border rounded-lg border-default flex items-center text text-lg font-bold hover:text-white hover:bg-default ${
+        isAuth && "bg-red-600 text-white border-none hover:bg-red-600"
+      }`}
+    >
+      {text}
+    </button>
+  )
+})

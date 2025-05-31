@@ -1,44 +1,41 @@
-import { PayloadAction, createSlice } from "@reduxjs/toolkit";
-import { FVK_KEY } from "../../../constants";
-import { Movies } from "../../../types";
+import { PayloadAction, createSlice } from "@reduxjs/toolkit"
+import { FVK_KEY } from "../../../constants"
+import { Movies } from "../../../types"
 
 interface InitialState {
-  favourites: Movies[];
-  theme: boolean;
-  newPage: number;
+  favourites: Movies[]
+  theme: boolean
+  newPage: number
 }
 
 const initialState: InitialState = {
   favourites: JSON.parse(localStorage.getItem(FVK_KEY) ?? "[]"),
   theme: true,
   newPage: 1,
-};
+}
 
 const moviesSlice = createSlice({
   name: "movies",
   initialState,
   reducers: {
     addFavourites: (state, action: PayloadAction<Movies>) => {
-      state.favourites.push(action.payload);
-      localStorage.setItem(FVK_KEY, JSON.stringify(state.favourites));
+      state.favourites.push(action.payload)
+      localStorage.setItem(FVK_KEY, JSON.stringify(state.favourites))
     },
     removeFavourite: (state, action: PayloadAction<Movies>) => {
-      state.favourites = state.favourites.filter(
-        (fv) => fv.id !== action.payload.id
-      );
-      localStorage.setItem(FVK_KEY, JSON.stringify(state.favourites));
+      state.favourites = state.favourites.filter((fv) => fv.id !== action.payload.id)
+      localStorage.setItem(FVK_KEY, JSON.stringify(state.favourites))
     },
     changeTheme: (state, action: PayloadAction<boolean>) => {
-      state.theme = action.payload;
+      state.theme = action.payload
     },
     changeNewPage: (state, action: PayloadAction<number>) => {
-      state.newPage = action.payload;
+      state.newPage = action.payload
     },
   },
-});
+})
 
-const { actions, reducer } = moviesSlice;
+const { actions, reducer } = moviesSlice
 
-export const { addFavourites, removeFavourite, changeTheme, changeNewPage } =
-  actions;
-export default reducer;
+export const { addFavourites, removeFavourite, changeTheme, changeNewPage } = actions
+export default reducer

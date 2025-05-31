@@ -1,8 +1,8 @@
-import { FC, memo } from "react";
-import StarRatings from "react-star-ratings";
+import { FC, memo } from "react"
+import StarRatings from "react-star-ratings"
 
 interface RatingProps {
-  rating: number;
+  rating: number
 }
 
 export const Rating: FC<RatingProps> = memo(({ rating }) => {
@@ -14,5 +14,5 @@ export const Rating: FC<RatingProps> = memo(({ rating }) => {
       starSpacing="3px"
       starDimension={"20px"}
     />
-  );
-});
+  )
+})
