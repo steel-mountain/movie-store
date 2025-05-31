@@ -1,5 +1,6 @@
 import { useAppDispatch, useAppSelector } from "../../shared/hooks/useRedux"
 import { changeTheme } from "../../shared/store/slices/movies/movies.slice"
+import { Input } from "../../shared/ui/Input"
 
 export const SwitcherTheme = () => {
   const theme = useAppSelector((state) => state.movies.theme)
@@ -18,7 +19,7 @@ export const SwitcherTheme = () => {
   return (
     <div className="mr-[10px]">
       <label className="relative inline-block w-20 h-10 rounded-full">
-        <input
+        <Input
           checked={theme}
           onChange={handlerChangeTheme}
           type="checkbox"

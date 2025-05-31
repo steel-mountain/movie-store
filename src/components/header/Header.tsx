@@ -6,6 +6,7 @@ import { logout } from "../../shared/store/slices/auth/auth.slice"
 import { changeNewPage } from "../../shared/store/slices/movies/movies.slice"
 import { Button } from "../../shared/ui/Button"
 import { Icon } from "../../shared/ui/Icon"
+import { Input } from "../../shared/ui/Input"
 import { getAuthButtonClass } from "../../shared/utils/buttonClasses"
 import { MobileMenu, NavItem, Wrapper } from "../index"
 
@@ -81,12 +82,13 @@ export const Header = () => {
           </div>
           <div className="hidden ll:flex ll:items-center ll:w-auto">
             <div className="flex items-center w-full">
-              <input
+              <Input
                 ref={search}
                 className="h-[50px] w-full max-w-[300px] bg-[#E4E4E4] dark:bg-[#1B1E25] dark:text-white rounded font-semibold text-lg text-[#535353] px-4 focus:outline-none"
                 type="text"
                 placeholder="Search"
               />
+
               <Button
                 className="h-[50px] w-[50px] bg-[#F4ED48] rounded flex justify-center items-center cursor-pointer"
                 onClick={handleSearch}

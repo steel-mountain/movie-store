@@ -6,6 +6,7 @@ import { logout } from "../../shared/store/slices/auth/auth.slice"
 import { changeNewPage } from "../../shared/store/slices/movies/movies.slice"
 import { Button } from "../../shared/ui/Button"
 import { Icon } from "../../shared/ui/Icon"
+import { Input } from "../../shared/ui/Input"
 import { getAuthButtonClass } from "../../shared/utils/buttonClasses"
 import { NavItem, SwitcherTheme } from "../index"
 
@@ -90,9 +91,9 @@ export const MobileMenu: FC<MobileMenuProps> = ({ isOpen, setIsMobileMenu }) => 
             <NavItem text="Избранное" link="/favourites" />
           </ul>
           <div className="flex items-center">
-            <input
+            <Input
               value={search}
-              onChange={(e) => setSearch(e.target.value)}
+              onChange={(value: string) => setSearch(value)}
               className="h-[50px] max-w-[300px] w-full bg-[#E4E4E4] dark:bg-[#1B1E25] dark:text-white rounded font-semibold text-lg text-[#535353] px-4 focus:outline-none"
               type="text"
               placeholder="Search"

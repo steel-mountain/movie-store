@@ -1,16 +1,11 @@
 import { ButtonHTMLAttributes, memo } from "react"
 
-interface ButtonProps extends ButtonHTMLAttributes<HTMLElement> {
-  className?: string
+interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   children?: React.ReactNode
 }
 
 export const Button = memo<ButtonProps>((props) => {
-  const { className, children, ...otherProps } = props
+  const { children, ...otherProps } = props
 
-  return (
-    <button className={className} {...otherProps}>
-      {children}
-    </button>
-  )
+  return <button {...otherProps}>{children}</button>
 })

@@ -1,16 +1,17 @@
-import { useForm } from "react-hook-form"
+import { Controller, useForm } from "react-hook-form"
 import { Navigate } from "react-router-dom"
 import { useAppDispatch, useAppSelector } from "../../shared/hooks/useRedux"
 import { fetchAuthLogin } from "../../shared/store/slices/auth/auth.slice"
 import { UserLogin } from "../../shared/types/users"
 import { Button } from "../../shared/ui/Button"
+import { Input } from "../../shared/ui/Input"
 
 export const Login = () => {
   const isAuth = Boolean(useAppSelector((state) => state.auth.data))
   const dispatch = useAppDispatch()
   const {
-    register,
     handleSubmit,
+    control,
     formState: { errors, isValid },
   } = useForm<UserLogin>({ mode: "onChange" })
 
@@ -32,26 +33,35 @@ export const Login = () => {
     <section className="bg-white max-w-[400px] mx-auto p-[50px] rounded-xl">
       <h1 className="text-center text-2xl font-bold text-gray-800 mb-7">Вход в аккаунт</h1>
       <form onSubmit={handleSubmit(onSubmit)}>
-        <input
-          className="w-full p-[15px] border border:#CACACA"
-          type="email"
-          placeholder="Email"
-          {...register("email", {
-            required: "Укажите почту",
-          })}
+        <Controller
+          name="email"
+          control={control}
+          rules={{ required: "Укажите почту" }}
+          render={({ field: { onChange } }) => (
+            <Input
+              onChange={onChange}
+              placeholder="Email"
+              type="email"
+              className="w-full p-[15px] border border:#CACACA"
+            />
+          )}
         />
         <div className="text-red-600">{errors.email?.message}</div>
-        <input
-          className="w-full p-[15px] border border:#CACACA mt-5"
-          type="password"
-          placeholder="Password"
-          {...register("password", {
-            required: "Укажите пароль",
-            minLength: {
-              value: 6,
-              message: "Пароль должен быть не менее 6 символов",
-            },
-          })}
+        <Controller
+          name="password"
+          control={control}
+          rules={{
+            required: "Укажите почту",
+            minLength: { value: 6, message: "Пароль должен быть не менее 6 символов" },
+          }}
+          render={({ field: { onChange } }) => (
+            <Input
+              onChange={onChange}
+              placeholder="Password"
+              type="password"
+              className="w-full p-[15px] border border:#CACACA mt-5"
+            />
+          )}
         />
         <div className="text-red-600">{errors.password?.message}</div>
         <Button

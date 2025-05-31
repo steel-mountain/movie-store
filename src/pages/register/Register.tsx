@@ -1,17 +1,18 @@
-import { useForm } from "react-hook-form"
+import { Controller, useForm } from "react-hook-form"
 import { Navigate } from "react-router-dom"
 import { avatar } from "../../shared/assets"
 import { useAppDispatch, useAppSelector } from "../../shared/hooks/useRedux"
 import { fetchAuthRegister } from "../../shared/store/slices/auth/auth.slice"
 import { UserRegister } from "../../shared/types"
 import { Button } from "../../shared/ui/Button"
+import { Input } from "../../shared/ui/Input"
 
 export const Register = () => {
   const isAuth = Boolean(useAppSelector((state) => state.auth.data))
   const dispatch = useAppDispatch()
   const {
-    register,
     handleSubmit,
+    control,
     formState: { errors, isValid },
   } = useForm<UserRegister>({ mode: "onChange" })
 
@@ -34,39 +35,57 @@ export const Register = () => {
       <h1 className="text-center text-2xl font-bold text-gray-800 mb-3">Создание аккаунта</h1>
       <img className="w-[120] h-[120px] mx-auto" src={avatar} alt="avatar" />
       <form onSubmit={handleSubmit(onSubmit)}>
-        <input
-          className="w-full p-[15px] border border:#CACACA"
-          type="text"
-          placeholder="Name"
-          {...register("name", {
+        <Controller
+          name="name"
+          control={control}
+          rules={{
             required: "Укажите имя",
-            minLength: {
-              value: 3,
-              message: "Имя должно быть не меньше 3 символов",
-            },
-          })}
+            minLength: { value: 3, message: "Имя должно быть не меньше 3 символов" },
+          }}
+          render={({ field: { onChange } }) => (
+            <Input
+              onChange={onChange}
+              placeholder="Name"
+              type="text"
+              className="w-full p-[15px] border border:#CACACA"
+            />
+          )}
         />
         <div className="text-red-600">{errors.name?.message}</div>
-        <input
-          className="w-full p-[15px] border border:#CACACA mt-5"
-          type="email"
-          placeholder="Email"
-          {...register("email", {
+        <Controller
+          name="email"
+          control={control}
+          rules={{
             required: "Укажите почту",
-          })}
+          }}
+          render={({ field: { onChange } }) => (
+            <Input
+              onChange={onChange}
+              placeholder="Email"
+              type="email"
+              className="w-full p-[15px] border border:#CACACA mt-5"
+            />
+          )}
         />
         <div className="text-red-600">{errors.email?.message}</div>
-        <input
-          className="w-full p-[15px] border border:#CACACA mt-5"
-          type="password"
-          placeholder="Password"
-          {...register("password", {
+        <Controller
+          name="password"
+          control={control}
+          rules={{
             required: "Укажите пароль",
             minLength: {
               value: 6,
               message: "Пароль должен быть не менее 6 символов",
             },
-          })}
+          }}
+          render={({ field: { onChange } }) => (
+            <Input
+              onChange={onChange}
+              placeholder="Password"
+              type="password"
+              className="w-full p-[15px] border border:#CACACA mt-5"
+            />
+          )}
         />
         <div className="text-red-600">{errors.password?.message}</div>
         <Button
