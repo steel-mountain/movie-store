@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { useGetSimilarMoviesQuery } from "../../store/movies/movies.api";
+import { useGetSimilarMoviesQuery } from "../../shared/store/slices/movies/movies.api";
 
 export const SimilarMovies = () => {
   const {

@@ -1,16 +1,13 @@
 import { FC, MouseEvent, useState } from "react";
 import { Link } from "react-router-dom";
 import { Heart, HeartFavourite, HeartWhite } from "../../shared/assets";
-import {
-  useAppDispatch,
-  useAppSelector,
-} from "../../shared/services/hooks/useTypedSelector";
-import { Movies } from "../../shared/types";
-import { Icon } from "../../shared/ui/Icon/Icon";
+import { useAppDispatch, useAppSelector } from "../../shared/hooks/useRedux";
 import {
   addFavourites,
   removeFavourite,
-} from "../../store/movies/movies.slice";
+} from "../../shared/store/slices/movies/movies.slice";
+import { Movies } from "../../shared/types";
+import { Icon } from "../../shared/ui/Icon/Icon";
 import { Rating } from "../index";
 
 interface CardProps {

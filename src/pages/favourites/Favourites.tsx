@@ -1,5 +1,5 @@
 import { Card, SwitcherTheme } from "../../components";
-import { useAppSelector } from "../../shared/services/hooks/useTypedSelector";
+import { useAppSelector } from "../../shared/hooks/useRedux";
 
 export const Favourites = () => {
   const { favourites } = useAppSelector((state) => state.movies);

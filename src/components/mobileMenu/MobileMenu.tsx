@@ -1,13 +1,10 @@
 import { Dispatch, FC, SetStateAction, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { CloseMenu, CloseMenuWhite, Search } from "../../shared/assets";
-import {
-  useAppDispatch,
-  useAppSelector,
-} from "../../shared/services/hooks/useTypedSelector";
+import { useAppDispatch, useAppSelector } from "../../shared/hooks/useRedux";
+import { logout } from "../../shared/store/slices/auth/auth.slice";
+import { changeNewPage } from "../../shared/store/slices/movies/movies.slice";
 import { Icon } from "../../shared/ui/Icon/Icon";
-import { logout } from "../../store/movies/auth.slice";
-import { changeNewPage } from "../../store/movies/movies.slice";
 import { Button } from "../header/Header";
 import { NavItem, SwitcherTheme } from "../index";
 

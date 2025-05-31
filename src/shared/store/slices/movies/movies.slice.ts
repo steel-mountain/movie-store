@@ -1,7 +1,6 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
-import { Movies } from "../../shared/types";
-
-const FVK_KEY = "rfk";
+import { FVK_KEY } from "../../../constants";
+import { Movies } from "../../../types";
 
 interface InitialState {
   favourites: Movies[];

@@ -1,8 +1,8 @@
 import { Suspense, useEffect } from "react";
 import { Route, Routes } from "react-router-dom";
 import { Loader } from "../components";
-import { useAppDispatch } from "../shared/services/hooks/useTypedSelector";
-import { fetchAuthMe } from "../store/movies/auth.slice";
+import { useAppDispatch } from "../shared/hooks/useRedux";
+import { fetchAuthMe } from "../shared/store/slices/auth/auth.slice";
 import { CartoonsAsync as Cartoons } from "./cartoons/CartoonsAsync";
 import { FavouritesAsync as Favourites } from "./favourites/FavouritesAsync";
 import { HomePage } from "./homePage/HomePage";

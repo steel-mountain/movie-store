@@ -1,11 +1,8 @@
 import { useSearchParams } from "react-router-dom";
 import { Card, Paginate, SwitcherTheme } from "../../components";
-import {
-  useAppDispatch,
-  useAppSelector,
-} from "../../shared/services/hooks/useTypedSelector";
-import { useGetMoviesByQuery } from "../../store/movies/movies.api";
-import { changeNewPage } from "../../store/movies/movies.slice";
+import { useAppDispatch, useAppSelector } from "../../shared/hooks/useRedux";
+import { useGetMoviesByQuery } from "../../shared/store/slices/movies/movies.api";
+import { changeNewPage } from "../../shared/store/slices/movies/movies.slice";
 
 export const SearchResult = () => {
   const [searchParams] = useSearchParams();

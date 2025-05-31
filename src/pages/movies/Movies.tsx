@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import { Card, Paginate, SwitcherTheme } from "../../components";
-import { useGetMoviesQuery } from "../../store/movies/movies.api";
+import { useGetMoviesQuery } from "../../shared/store/slices/movies/movies.api";
 
 export const Movies = () => {
   const [searchParams] = useSearchParams();

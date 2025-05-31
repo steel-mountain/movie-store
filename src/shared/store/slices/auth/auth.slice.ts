@@ -1,6 +1,6 @@
 import { PayloadAction, createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import axios from "../../axios";
-import { UserLogin, UserRegister } from "../../shared/types";
+import axios from "../../../api/axios";
+import { UserLogin, UserRegister } from "../../../types";
 
 export const fetchAuthLogin = createAsyncThunk(
   "auth/fetchAuthLogin",

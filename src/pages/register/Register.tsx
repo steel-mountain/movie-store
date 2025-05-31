@@ -1,12 +1,9 @@
 import { useForm } from "react-hook-form";
 import { Navigate } from "react-router-dom";
 import { avatar } from "../../shared/assets";
-import {
-  useAppDispatch,
-  useAppSelector,
-} from "../../shared/services/hooks/useTypedSelector";
+import { useAppDispatch, useAppSelector } from "../../shared/hooks/useRedux";
+import { fetchAuthRegister } from "../../shared/store/slices/auth/auth.slice";
 import { UserRegister } from "../../shared/types";
-import { fetchAuthRegister } from "../../store/movies/auth.slice";
 
 export const Register = () => {
   const isAuth = Boolean(useAppSelector((state) => state.auth.data));

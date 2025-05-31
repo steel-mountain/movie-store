@@ -1,6 +1,6 @@
 import { SwitcherTheme } from "../../components";
 import { star } from "../../shared/assets";
-import { useGetMovieRandomQuery } from "../../store/movies/movies.api";
+import { useGetMovieRandomQuery } from "../../shared/store/slices/movies/movies.api";
 
 export const HomePage = () => {
   const { data: poster, isLoading, isError } = useGetMovieRandomQuery();

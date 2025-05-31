@@ -1,4 +1,4 @@
-// GetMovie
+// Get Movie
 
 export interface ResponseMovie {
   id: number;

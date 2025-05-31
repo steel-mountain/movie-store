@@ -1,8 +1,5 @@
-import {
-  useAppDispatch,
-  useAppSelector,
-} from "../../shared/services/hooks/useTypedSelector";
-import { changeTheme } from "../../store/movies/movies.slice";
+import { useAppDispatch, useAppSelector } from "../../shared/hooks/useRedux";
+import { changeTheme } from "../../shared/store/slices/movies/movies.slice";
 
 export const SwitcherTheme = () => {
   const theme = useAppSelector((state) => state.movies.theme);

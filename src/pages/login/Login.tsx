@@ -1,11 +1,8 @@
 import { useForm } from "react-hook-form";
 import { Navigate } from "react-router-dom";
-import {
-  useAppDispatch,
-  useAppSelector,
-} from "../../shared/services/hooks/useTypedSelector";
+import { useAppDispatch, useAppSelector } from "../../shared/hooks/useRedux";
+import { fetchAuthLogin } from "../../shared/store/slices/auth/auth.slice";
 import { UserLogin } from "../../shared/types/users";
-import { fetchAuthLogin } from "../../store/movies/auth.slice";
 
 export const Login = () => {
   const isAuth = Boolean(useAppSelector((state) => state.auth.data));

@@ -1,8 +1,7 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import { getRandom } from "../../shared/services/getRandom";
-import { ResponseMovie, ResponseMovies } from "../../shared/types";
-
-const API_KEY = "9KAR067-Q14MT1Q-K8BN9QR-B80H7FW";
+import { API_KEY } from "../../../constants";
+import { getRandomNumber } from "../../../lib/getRandomNumber";
+import { ResponseMovie, ResponseMovies } from "../../../types";
 
 export const moviesApi = createApi({
   reducerPath: "movieApi",
@@ -58,7 +57,7 @@ export const moviesApi = createApi({
     }),
     getSimilarMovies: builder.query<ResponseMovies, void>({
       query: () => ({
-        url: `movie?page=${getRandom(
+        url: `movie?page=${getRandomNumber(
           1,
           265
         )}&limit=6&selectFields=&notNullFields=name&notNullFields=year&notNullFields=rating.kp&notNullFields=poster.url&year=2015-2024&rating.kp=7-10&type=movie`,
