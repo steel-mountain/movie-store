@@ -4,13 +4,11 @@ import { Movies } from "../../../types"
 
 interface InitialState {
   favourites: Movies[]
-  theme: boolean
   newPage: number
 }
 
 const initialState: InitialState = {
   favourites: JSON.parse(localStorage.getItem(FVK_KEY) ?? "[]"),
-  theme: true,
   newPage: 1,
 }
 
@@ -26,9 +24,6 @@ const moviesSlice = createSlice({
       state.favourites = state.favourites.filter((fv) => fv.id !== action.payload.id)
       localStorage.setItem(FVK_KEY, JSON.stringify(state.favourites))
     },
-    changeTheme: (state, action: PayloadAction<boolean>) => {
-      state.theme = action.payload
-    },
     changeNewPage: (state, action: PayloadAction<number>) => {
       state.newPage = action.payload
     },
@@ -37,5 +32,5 @@ const moviesSlice = createSlice({
 
 const { actions, reducer } = moviesSlice
 
-export const { addFavourites, removeFavourite, changeTheme, changeNewPage } = actions
+export const { addFavourites, removeFavourite, changeNewPage } = actions
 export default reducer

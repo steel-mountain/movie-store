@@ -1,20 +1,22 @@
 import { useRef, useState } from "react"
 import { useNavigate } from "react-router-dom"
+import { useTheme } from "../../providers/ThemeProvider/useTheme"
 import { mobileMenu, mobileMenuWhite, Search, Theme } from "../../shared/assets"
 import { useAppDispatch, useAppSelector } from "../../shared/hooks/useRedux"
 import { logout } from "../../shared/store/slices/auth/auth.slice"
-import { changeNewPage, changeTheme } from "../../shared/store/slices/movies/movies.slice"
+import { changeNewPage } from "../../shared/store/slices/movies/movies.slice"
 import { AppLink, Button, Icon, Input } from "../../shared/ui"
 import { getAuthButtonClass } from "../../shared/utils/buttonClasses"
 import { MobileMenu, NavItem, Wrapper } from "../index"
 
 export const Header = () => {
   const [isMobileMenu, setIsMobileMenu] = useState(false)
+  const { theme, toggleTheme } = useTheme()
+
   const navigate = useNavigate()
   const search = useRef<HTMLInputElement>(null)
 
   const isAuth = Boolean(useAppSelector((state) => state.auth.data))
-  const theme = useAppSelector((state) => state.movies.theme)
   const dispatch = useAppDispatch()
 
   const handleSearch = () => {
@@ -30,16 +32,6 @@ export const Header = () => {
     if (window.confirm("Вы действительно хотите выйти?")) {
       dispatch(logout())
       window.localStorage.removeItem("token")
-    }
-  }
-
-  const handlerChangeTheme = () => {
-    if (theme) {
-      dispatch(changeTheme(!theme))
-      document.body.classList.add("dark")
-    } else {
-      dispatch(changeTheme(!theme))
-      document.body.classList.remove("dark")
     }
   }
 
@@ -69,7 +61,7 @@ export const Header = () => {
         <div className="flex items-center justify-between">
           <div className="hidden ll:flex gap-[10px] m-[10px]">
             <Button>
-              <Icon Svg={Theme} className="h-8 w-8" onClick={handlerChangeTheme} />
+              <Icon Svg={Theme} className="h-8 w-8" onClick={toggleTheme} />
             </Button>
             {isAuth ? (
               <>

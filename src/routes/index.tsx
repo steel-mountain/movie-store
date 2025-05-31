@@ -1,15 +1,15 @@
 import { RouteObject } from "react-router-dom"
-import { Cartoons } from "../pages/Cartoons/Cartoons"
-import { Favourites } from "../pages/Favourites/Favourites"
+import { Cartoons } from "../pages/Cartoons/CartoonsAsync"
+import { Favourites } from "../pages/Favourites/FavouritesAsync"
 import { HomePage } from "../pages/HomePage/HomePage"
 import { Layout } from "../pages/Layout/Layout"
-import { Login } from "../pages/Login/Login"
-import { Movie } from "../pages/Movie/Movie"
-import { Movies } from "../pages/Movies/Movies"
+import { Login } from "../pages/Login/LoginAsync"
+import { Movie } from "../pages/Movie/MovieAsync"
+import { Movies } from "../pages/Movies/MoviesAsync"
 import { Page404 } from "../pages/Page404/Page404"
-import { Register } from "../pages/Register/Register"
-import { SearchResult } from "../pages/SearchResult/SearchResult"
-import { Series } from "../pages/Series/Series"
+import { Register } from "../pages/Register/RegisterAsync"
+import { SearchResult } from "../pages/SearchResult/SearchResultAsync"
+import { Series } from "../pages/Series/SeriesAsync"
 
 export const appRoutes: RouteObject[] = [
   {

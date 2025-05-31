@@ -1,5 +1,6 @@
 import { FC, MouseEvent, useState } from "react"
 import { Link } from "react-router-dom"
+import { useTheme } from "../../providers/ThemeProvider/useTheme"
 import { Heart, HeartFavourite, HeartWhite } from "../../shared/assets"
 import { useAppDispatch, useAppSelector } from "../../shared/hooks/useRedux"
 import { addFavourites, removeFavourite } from "../../shared/store/slices/movies/movies.slice"
@@ -14,9 +15,10 @@ interface CardProps {
 }
 
 export const Card: FC<CardProps> = ({ movie, query, isFavourite = false }) => {
+  const { theme } = useTheme()
+
   const dispatch = useAppDispatch()
 
-  const theme = useAppSelector((state) => state.movies.theme)
   const favourite = useAppSelector((state) => state.movies.favourites.find((item) => item.id === movie.id))
   const isAuth = Boolean(useAppSelector((state) => state.auth.data))
 

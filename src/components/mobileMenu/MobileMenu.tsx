@@ -1,5 +1,6 @@
 import { Dispatch, FC, SetStateAction, useState } from "react"
 import { useNavigate } from "react-router-dom"
+import { useTheme } from "../../providers/ThemeProvider/useTheme"
 import { CloseMenu, CloseMenuWhite, Search } from "../../shared/assets"
 import { useAppDispatch, useAppSelector } from "../../shared/hooks/useRedux"
 import { logout } from "../../shared/store/slices/auth/auth.slice"
@@ -15,11 +16,12 @@ interface MobileMenuProps {
 
 export const MobileMenu: FC<MobileMenuProps> = ({ isOpen, setIsMobileMenu }) => {
   const [search, setSearch] = useState("")
+  const { theme } = useTheme()
+
   const isAuth = Boolean(useAppSelector((state) => state.auth.data))
   const navigate = useNavigate()
 
   const dispatch = useAppDispatch()
-  const theme = useAppSelector((state) => state.movies.theme)
 
   const handleSearch = () => {
     if (search.trim()) {
