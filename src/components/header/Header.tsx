@@ -1,12 +1,10 @@
 import { useRef, useState } from "react"
-import { Link, useNavigate } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 import { mobileMenu, mobileMenuWhite, Search } from "../../shared/assets"
 import { useAppDispatch, useAppSelector } from "../../shared/hooks/useRedux"
 import { logout } from "../../shared/store/slices/auth/auth.slice"
 import { changeNewPage } from "../../shared/store/slices/movies/movies.slice"
-import { Button } from "../../shared/ui/Button"
-import { Icon } from "../../shared/ui/Icon"
-import { Input } from "../../shared/ui/Input"
+import { AppLink, Button, Icon, Input } from "../../shared/ui"
 import { getAuthButtonClass } from "../../shared/utils/buttonClasses"
 import { MobileMenu, NavItem, Wrapper } from "../index"
 
@@ -39,9 +37,12 @@ export const Header = () => {
     <Wrapper>
       <div className="flex items-center justify-between w-full">
         <div className="flex items-center justify-between w-full ll:w-auto">
-          <Link to="/" className="text-[#535353] hover:text-default font-bold text-3xl dark:text-[#FBFDFC]">
+          <AppLink
+            to="/"
+            className="text-[#535353] hover:text-default font-bold text-3xl dark:text-[#FBFDFC]"
+          >
             Movie-store
-          </Link>
+          </AppLink>
           <nav className="ml-8 hidden ll:block">
             <ul className="flex space-x-7 items-center">
               <NavItem text="Фильмы" link="/movies" />
@@ -59,24 +60,24 @@ export const Header = () => {
           <div className="hidden ll:flex gap-[10px] m-[10px]">
             {isAuth ? (
               <>
-                <Link to="auth/login">
+                <AppLink to="auth/login">
                   <Button className={getAuthButtonClass(isAuth)} onClick={onClickLogout}>
                     Выход
                   </Button>
-                </Link>
+                </AppLink>
               </>
             ) : (
               <>
-                <Link to="auth/login">
+                <AppLink to="auth/login">
                   <Button className={getAuthButtonClass(isAuth)} onClick={onClickLogout}>
                     Вход
                   </Button>
-                </Link>
-                <Link to="auth/register">
+                </AppLink>
+                <AppLink to="auth/register">
                   <Button className={getAuthButtonClass(isAuth)} onClick={onClickLogout}>
                     Регистрация
                   </Button>
-                </Link>
+                </AppLink>
               </>
             )}
           </div>

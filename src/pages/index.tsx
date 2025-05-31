@@ -2,6 +2,7 @@ import { Suspense, useEffect } from "react"
 import { Route, Routes } from "react-router-dom"
 import { useAppDispatch } from "../shared/hooks/useRedux"
 import { fetchAuthMe } from "../shared/store/slices/auth/auth.slice"
+import { Loader } from "../shared/ui"
 import { Cartoons } from "./Cartoons/CartoonsAsync"
 import { Favourites } from "./Favourites/FavouritesAsync"
 import { HomePage } from "./HomePage/HomePage"
@@ -13,7 +14,6 @@ import { Page404 } from "./Page404/Page404"
 import { Register } from "./Register/RegisterAsync"
 import { SearchResult } from "./SearchResult/SearchResultAsync"
 import { Series } from "./Series/SeriesAsync"
-import { Loader } from "../shared/ui/Loader"
 
 function Pages() {
   const dispatch = useAppDispatch()

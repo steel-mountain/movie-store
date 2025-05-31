@@ -4,8 +4,7 @@ import { Heart, HeartFavourite, HeartWhite } from "../../shared/assets"
 import { useAppDispatch, useAppSelector } from "../../shared/hooks/useRedux"
 import { addFavourites, removeFavourite } from "../../shared/store/slices/movies/movies.slice"
 import { Movies } from "../../shared/types"
-import { Button } from "../../shared/ui/Button"
-import { Icon } from "../../shared/ui/Icon"
+import { Button, Icon } from "../../shared/ui"
 import { Rating } from "../index"
 
 interface CardProps {

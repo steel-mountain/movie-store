@@ -4,8 +4,7 @@ import { avatar } from "../../shared/assets"
 import { useAppDispatch, useAppSelector } from "../../shared/hooks/useRedux"
 import { fetchAuthRegister } from "../../shared/store/slices/auth/auth.slice"
 import { UserRegister } from "../../shared/types"
-import { Button } from "../../shared/ui/Button"
-import { Input } from "../../shared/ui/Input"
+import { Button, Input } from "../../shared/ui"
 
 export const Register = () => {
   const isAuth = Boolean(useAppSelector((state) => state.auth.data))

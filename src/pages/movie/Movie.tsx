@@ -2,7 +2,7 @@ import { FC } from "react"
 import { useNavigate, useParams } from "react-router-dom"
 import { SimilarMovies } from "../../components"
 import { useGetMovieQuery } from "../../shared/store/slices/movies/movies.api"
-import { Button } from "../../shared/ui/Button"
+import { Button } from "../../shared/ui"
 
 export const Movie = () => {
   const { id = "" } = useParams()

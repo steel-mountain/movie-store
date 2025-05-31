@@ -1,12 +1,10 @@
 import { Dispatch, FC, SetStateAction, useState } from "react"
-import { Link, useNavigate } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 import { CloseMenu, CloseMenuWhite, Search } from "../../shared/assets"
 import { useAppDispatch, useAppSelector } from "../../shared/hooks/useRedux"
 import { logout } from "../../shared/store/slices/auth/auth.slice"
 import { changeNewPage } from "../../shared/store/slices/movies/movies.slice"
-import { Button } from "../../shared/ui/Button"
-import { Icon } from "../../shared/ui/Icon"
-import { Input } from "../../shared/ui/Input"
+import { AppLink, Button, Icon, Input } from "../../shared/ui"
 import { getAuthButtonClass } from "../../shared/utils/buttonClasses"
 import { NavItem, SwitcherTheme } from "../index"
 
@@ -63,24 +61,24 @@ export const MobileMenu: FC<MobileMenuProps> = ({ isOpen, setIsMobileMenu }) => 
           <div className="flex flex-wrap ml-[10px] gap-[10px]">
             {isAuth ? (
               <>
-                <Link to="auth/login">
+                <AppLink to="auth/login">
                   <Button className={getAuthButtonClass(isAuth)} onClick={onClickLogout}>
                     Выход
                   </Button>
-                </Link>
+                </AppLink>
               </>
             ) : (
               <>
-                <Link to="auth/login">
+                <AppLink to="auth/login">
                   <Button className={getAuthButtonClass(isAuth)} onClick={onClickLogout}>
                     Вход
                   </Button>
-                </Link>
-                <Link to="auth/register">
+                </AppLink>
+                <AppLink to="auth/register">
                   <Button className={getAuthButtonClass(isAuth)} onClick={onClickLogout}>
                     Регистрация
                   </Button>
-                </Link>
+                </AppLink>
               </>
             )}
           </div>

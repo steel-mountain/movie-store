@@ -3,8 +3,7 @@ import { Navigate } from "react-router-dom"
 import { useAppDispatch, useAppSelector } from "../../shared/hooks/useRedux"
 import { fetchAuthLogin } from "../../shared/store/slices/auth/auth.slice"
 import { UserLogin } from "../../shared/types/users"
-import { Button } from "../../shared/ui/Button"
-import { Input } from "../../shared/ui/Input"
+import { Button, Input } from "../../shared/ui"
 
 export const Login = () => {
   const isAuth = Boolean(useAppSelector((state) => state.auth.data))

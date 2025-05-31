@@ -1,5 +1,5 @@
-import { Link } from "react-router-dom"
 import { useGetSimilarMoviesQuery } from "../../shared/store/slices/movies/movies.api"
+import { AppLink } from "../../shared/ui"
 
 export const SimilarMovies = () => {
   const {
@@ -18,7 +18,7 @@ export const SimilarMovies = () => {
 
   const getSimilarMovies = data?.map((movie) => {
     return (
-      <Link
+      <AppLink
         to={`/movie/${movie.id}`}
         key={movie.id}
         className="flex flex-col items-center justify-center gap-2 w-[200px] h-[400px] cursor-pointer"
@@ -31,7 +31,7 @@ export const SimilarMovies = () => {
         <h3 className="text-lg font-semibold text-neutral-700 dark:text-white">
           {movie.name.length < 17 ? movie.name : `${movie.name.slice(0, 17)}...`}
         </h3>
-      </Link>
+      </AppLink>
     )
   })
 
