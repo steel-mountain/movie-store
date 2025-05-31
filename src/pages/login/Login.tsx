@@ -3,6 +3,7 @@ import { Navigate } from "react-router-dom"
 import { useAppDispatch, useAppSelector } from "../../shared/hooks/useRedux"
 import { fetchAuthLogin } from "../../shared/store/slices/auth/auth.slice"
 import { UserLogin } from "../../shared/types/users"
+import { Button } from "../../shared/ui/Button"
 
 export const Login = () => {
   const isAuth = Boolean(useAppSelector((state) => state.auth.data))
@@ -53,13 +54,13 @@ export const Login = () => {
           })}
         />
         <div className="text-red-600">{errors.password?.message}</div>
-        <button
+        <Button
           disabled={!isValid}
           type="submit"
           className={`mt-5 text-white bg-default w-full p-[8px] ${!isValid ? "bg-opacity-50" : null}`}
         >
           Войти
-        </button>
+        </Button>
       </form>
     </section>
   )

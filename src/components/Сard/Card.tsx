@@ -4,7 +4,8 @@ import { Heart, HeartFavourite, HeartWhite } from "../../shared/assets"
 import { useAppDispatch, useAppSelector } from "../../shared/hooks/useRedux"
 import { addFavourites, removeFavourite } from "../../shared/store/slices/movies/movies.slice"
 import { Movies } from "../../shared/types"
-import { Icon } from "../../shared/ui/Icon/Icon"
+import { Button } from "../../shared/ui/Button"
+import { Icon } from "../../shared/ui/Icon"
 import { Rating } from "../index"
 
 interface CardProps {
@@ -62,12 +63,15 @@ export const Card: FC<CardProps> = ({ movie, query, isFavourite = false }) => {
       <div className="flex justify-between">
         <p className="text-[#C3C3C3] font-medium text-lg">{movie.year}</p>
         {isAuth && (
-          <button
+          <Button
             className="block w-[25px] h-[25px]"
             onClick={isFavourite ? handlerAddOrRemoveMovie : handlerIsOrFalseFav}
           >
-            {isFav ? <Icon Svg={HeartFavourite} /> : <Icon Svg={theme ? Heart : HeartWhite} />}
-          </button>
+            <Icon
+              Svg={isFav ? HeartFavourite : theme ? Heart : HeartWhite}
+              className="block w-[25px] h-[25px]"
+            />
+          </Button>
         )}
       </div>
     </div>

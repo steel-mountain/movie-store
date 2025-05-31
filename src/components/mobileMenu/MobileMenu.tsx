@@ -4,8 +4,9 @@ import { CloseMenu, CloseMenuWhite, Search } from "../../shared/assets"
 import { useAppDispatch, useAppSelector } from "../../shared/hooks/useRedux"
 import { logout } from "../../shared/store/slices/auth/auth.slice"
 import { changeNewPage } from "../../shared/store/slices/movies/movies.slice"
-import { Icon } from "../../shared/ui/Icon/Icon"
-import { Button } from "../Header/Header"
+import { Button } from "../../shared/ui/Button"
+import { Icon } from "../../shared/ui/Icon"
+import { getAuthButtonClass } from "../../shared/utils/buttonClasses"
 import { NavItem, SwitcherTheme } from "../index"
 
 interface MobileMenuProps {
@@ -62,16 +63,22 @@ export const MobileMenu: FC<MobileMenuProps> = ({ isOpen, setIsMobileMenu }) => 
             {isAuth ? (
               <>
                 <Link to="auth/login">
-                  <Button onClickLogout={onClickLogout} text="Выход" isAuth />
+                  <Button className={getAuthButtonClass(isAuth)} onClick={onClickLogout}>
+                    Выход
+                  </Button>
                 </Link>
               </>
             ) : (
               <>
                 <Link to="auth/login">
-                  <Button text="Вход" />
+                  <Button className={getAuthButtonClass(isAuth)} onClick={onClickLogout}>
+                    Вход
+                  </Button>
                 </Link>
                 <Link to="auth/register">
-                  <Button text="Регистрация" />
+                  <Button className={getAuthButtonClass(isAuth)} onClick={onClickLogout}>
+                    Регистрация
+                  </Button>
                 </Link>
               </>
             )}
@@ -90,12 +97,12 @@ export const MobileMenu: FC<MobileMenuProps> = ({ isOpen, setIsMobileMenu }) => 
               type="text"
               placeholder="Search"
             />
-            <button
+            <Button
               onClick={handleSearch}
               className="h-[50px] w-[50px] bg-[#F4ED48] rounded flex justify-center items-center cursor-pointer"
             >
               <Icon Svg={Search} className="h-[25px] w-[25px]" />
-            </button>
+            </Button>
           </div>
           <SwitcherTheme />
         </nav>

@@ -2,6 +2,7 @@ import { FC } from "react"
 import { useNavigate, useParams } from "react-router-dom"
 import { SimilarMovies } from "../../components"
 import { useGetMovieQuery } from "../../shared/store/slices/movies/movies.api"
+import { Button } from "../../shared/ui/Button"
 
 export const Movie = () => {
   const { id = "" } = useParams()
@@ -38,12 +39,12 @@ const MovieContent: FC<{ id: string }> = ({ id }) => {
         ) : (
           movie !== undefined && (
             <div>
-              <button
+              <Button
                 onClick={() => navigate(-1)}
                 className="mb-[50px] inline-block px-[20px] h-[50px] cursor-pointer text-white bg-default font-bold text-xl rounded"
               >
                 НАЗАД
-              </button>
+              </Button>
               <div className="flex flex-wrap m:flex-nowrap mb-[20px]">
                 <img
                   className="w-[300px] h-[400px] m:mr-[50px] mb-[15px] mx-auto ml-0"

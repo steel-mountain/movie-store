@@ -4,6 +4,7 @@ import { avatar } from "../../shared/assets"
 import { useAppDispatch, useAppSelector } from "../../shared/hooks/useRedux"
 import { fetchAuthRegister } from "../../shared/store/slices/auth/auth.slice"
 import { UserRegister } from "../../shared/types"
+import { Button } from "../../shared/ui/Button"
 
 export const Register = () => {
   const isAuth = Boolean(useAppSelector((state) => state.auth.data))
@@ -68,13 +69,13 @@ export const Register = () => {
           })}
         />
         <div className="text-red-600">{errors.password?.message}</div>
-        <button
+        <Button
           disabled={!isValid}
           type="submit"
           className={`mt-5 text-white bg-default w-full p-[8px] ${!isValid ? "bg-opacity-50" : null}`}
         >
           Зарегистрироваться
-        </button>
+        </Button>
       </form>
     </section>
   )

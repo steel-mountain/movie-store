@@ -1,10 +1,12 @@
-import { FC, memo, useRef, useState } from "react"
+import { useRef, useState } from "react"
 import { Link, useNavigate } from "react-router-dom"
 import { mobileMenu, mobileMenuWhite, Search } from "../../shared/assets"
 import { useAppDispatch, useAppSelector } from "../../shared/hooks/useRedux"
 import { logout } from "../../shared/store/slices/auth/auth.slice"
 import { changeNewPage } from "../../shared/store/slices/movies/movies.slice"
-import { Icon } from "../../shared/ui/Icon/Icon"
+import { Button } from "../../shared/ui/Button"
+import { Icon } from "../../shared/ui/Icon"
+import { getAuthButtonClass } from "../../shared/utils/buttonClasses"
 import { MobileMenu, NavItem, Wrapper } from "../index"
 
 export const Header = () => {
@@ -57,16 +59,22 @@ export const Header = () => {
             {isAuth ? (
               <>
                 <Link to="auth/login">
-                  <Button onClickLogout={onClickLogout} text="Выход" isAuth />
+                  <Button className={getAuthButtonClass(isAuth)} onClick={onClickLogout}>
+                    Выход
+                  </Button>
                 </Link>
               </>
             ) : (
               <>
                 <Link to="auth/login">
-                  <Button text="Вход" />
+                  <Button className={getAuthButtonClass(isAuth)} onClick={onClickLogout}>
+                    Вход
+                  </Button>
                 </Link>
                 <Link to="auth/register">
-                  <Button text="Регистрация" />
+                  <Button className={getAuthButtonClass(isAuth)} onClick={onClickLogout}>
+                    Регистрация
+                  </Button>
                 </Link>
               </>
             )}
@@ -79,12 +87,12 @@ export const Header = () => {
                 type="text"
                 placeholder="Search"
               />
-              <button
-                onClick={handleSearch}
+              <Button
                 className="h-[50px] w-[50px] bg-[#F4ED48] rounded flex justify-center items-center cursor-pointer"
+                onClick={handleSearch}
               >
                 <Icon Svg={Search} className="h-[25px] w-[25px]" />
-              </button>
+              </Button>
             </div>
           </div>
         </div>
@@ -92,22 +100,3 @@ export const Header = () => {
     </Wrapper>
   )
 }
-
-interface ButtonProps {
-  text: string
-  isAuth?: boolean
-  onClickLogout?: () => void
-}
-
-export const Button: FC<ButtonProps> = memo(({ text, isAuth, onClickLogout }) => {
-  return (
-    <button
-      onClick={onClickLogout}
-      className={`h-[50px] p-[20px] text-default border rounded-lg border-default flex items-center text text-lg font-bold hover:text-white hover:bg-default ${
-        isAuth && "bg-red-600 text-white border-none hover:bg-red-600"
-      }`}
-    >
-      {text}
-    </button>
-  )
-})
