@@ -1,6 +1,5 @@
 export { Footer } from "./Footer/Footer"
 export { Header } from "./Header/Header"
-export { Loader } from "./Loader/Loader"
 export { MobileMenu } from "./MobileMenu/MobileMenu"
 export { NavItem } from "./NavItem/NavItem"
 export { Paginate } from "./Paginate/Paginate"
