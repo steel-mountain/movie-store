@@ -5,7 +5,7 @@ import { useAppDispatch, useAppSelector } from "../../shared/hooks/useRedux";
 import { logout } from "../../shared/store/slices/auth/auth.slice";
 import { changeNewPage } from "../../shared/store/slices/movies/movies.slice";
 import { Icon } from "../../shared/ui/Icon/Icon";
-import { Button } from "../header/Header";
+import { Button } from "../Header/Header";
 import { NavItem, SwitcherTheme } from "../index";
 
 interface MobileMenuProps {

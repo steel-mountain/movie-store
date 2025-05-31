@@ -3,19 +3,19 @@ import { Route, Routes } from "react-router-dom";
 import { Loader } from "../components";
 import { useAppDispatch } from "../shared/hooks/useRedux";
 import { fetchAuthMe } from "../shared/store/slices/auth/auth.slice";
-import { CartoonsAsync as Cartoons } from "./cartoons/CartoonsAsync";
-import { FavouritesAsync as Favourites } from "./favourites/FavouritesAsync";
-import { HomePage } from "./homePage/HomePage";
-import { Layout } from "./layout/Layout";
-import { LoginAsync as Login } from "./login/LoginAsync";
-import { MovieAsync as Movie } from "./movie/MovieAsync";
-import { MoviesAsync as Movies } from "./movies/MoviesAsync";
-import { Page404 } from "./page404/Page404";
-import { RegisterAsync as Register } from "./register/RegisterAsync";
-import { SearchResultAsync as SearchResult } from "./searchResult/SearchResultAsync";
-import { SeriesAsync as Series } from "./series/SeriesAsync";
+import { CartoonsAsync as Cartoons } from "./Cartoons/CartoonsAsync";
+import { FavouritesAsync as Favourites } from "./Favourites/FavouritesAsync";
+import { HomePage } from "./HomePage/HomePage";
+import { Layout } from "./Layout/Layout";
+import { LoginAsync as Login } from "./Login/LoginAsync";
+import { MovieAsync as Movie } from "./Movie/MovieAsync";
+import { MoviesAsync as Movies } from "./Movies/MoviesAsync";
+import { Page404 } from "./Page404/Page404";
+import { RegisterAsync as Register } from "./Register/RegisterAsync";
+import { SearchResultAsync as SearchResult } from "./SearchResult/SearchResultAsync";
+import { SeriesAsync as Series } from "./Series/SeriesAsync";
 
-function Pages(): JSX.Element {
+function Pages() {
   const dispatch = useAppDispatch();
 
   useEffect(() => {
