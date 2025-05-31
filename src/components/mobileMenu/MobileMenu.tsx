@@ -6,7 +6,7 @@ import { logout } from "../../shared/store/slices/auth/auth.slice"
 import { changeNewPage } from "../../shared/store/slices/movies/movies.slice"
 import { AppLink, Button, Icon, Input } from "../../shared/ui"
 import { getAuthButtonClass } from "../../shared/utils/buttonClasses"
-import { NavItem, SwitcherTheme } from "../index"
+import { NavItem } from "../index"
 
 interface MobileMenuProps {
   isOpen: boolean
@@ -103,7 +103,6 @@ export const MobileMenu: FC<MobileMenuProps> = ({ isOpen, setIsMobileMenu }) => 
               <Icon Svg={Search} className="h-[25px] w-[25px]" />
             </Button>
           </div>
-          <SwitcherTheme />
         </nav>
       </div>
     </>

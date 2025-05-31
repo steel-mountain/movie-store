@@ -1,4 +1,4 @@
-import { Card, SwitcherTheme } from "../../components"
+import { Card } from "../../components"
 import { useAppSelector } from "../../shared/hooks/useRedux"
 
 export const Favourites = () => {
@@ -16,9 +16,6 @@ export const Favourites = () => {
         <p className="text-4xl dark:text-white">Вы пока еще ничего не добавляли...</p>
       )}
       {!isAuth && <p className="text-4xl dark:text-white">Авторизуйтесь чтобы добавить в избранное</p>}
-      <div className="absolute bottom-48 left-[-130px]">
-        <SwitcherTheme />
-      </div>
     </div>
   )
 }

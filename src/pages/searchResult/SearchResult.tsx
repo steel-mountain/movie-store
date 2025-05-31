@@ -1,5 +1,5 @@
 import { useSearchParams } from "react-router-dom"
-import { Card, Paginate, SwitcherTheme } from "../../components"
+import { Card, Paginate } from "../../components"
 import { useAppDispatch, useAppSelector } from "../../shared/hooks/useRedux"
 import { useGetMoviesByQuery } from "../../shared/store/slices/movies/movies.api"
 import { changeNewPage } from "../../shared/store/slices/movies/movies.slice"
@@ -46,9 +46,6 @@ export const SearchResult = () => {
       <div className="flex flex-wrap justify-center gap-[40px] relative">
         {isError && <p className="text-4xl dark:text-white">Ошибка доступа...</p>}
         {isLoading || isFetching ? <p className="text-4xl dark:text-white">Loading...</p> : movies}
-        <div className="absolute bottom-48 left-[-130px]">
-          <SwitcherTheme />
-        </div>
       </div>
       <div>
         {movies?.length !== 0 && !isFetching ? (

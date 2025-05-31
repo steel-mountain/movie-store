@@ -1,4 +1,3 @@
-import { SwitcherTheme } from "../../components"
 import { star } from "../../shared/assets"
 import { useGetMovieRandomQuery } from "../../shared/store/slices/movies/movies.api"
 
@@ -36,9 +35,6 @@ export const HomePage = () => {
                 </a>
               ))}
             </div>
-          </div>
-          <div className="absolute bottom-16 left-[-130px]">
-            <SwitcherTheme />
           </div>
         </section>
       )}
