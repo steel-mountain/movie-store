@@ -1,6 +1,6 @@
 import { lazy } from "react";
 
-export const MovieAsync = lazy(() =>
+export const Movie = lazy(() =>
   import(/*webpackChunkName:"[Movie]"*/ "./Movie").then((res) => ({
     default: res.Movie,
   }))

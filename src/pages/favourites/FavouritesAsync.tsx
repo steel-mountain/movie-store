@@ -1,6 +1,6 @@
 import { lazy } from "react";
 
-export const FavouritesAsync = lazy(() =>
+export const Favourites = lazy(() =>
   import(/*webpackChunkName:"[Favourites]"*/ "./Favourites").then((res) => ({
     default: res.Favourites,
   }))

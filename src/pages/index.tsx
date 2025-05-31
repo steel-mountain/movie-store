@@ -3,17 +3,17 @@ import { Route, Routes } from "react-router-dom";
 import { Loader } from "../components";
 import { useAppDispatch } from "../shared/hooks/useRedux";
 import { fetchAuthMe } from "../shared/store/slices/auth/auth.slice";
-import { CartoonsAsync as Cartoons } from "./Cartoons/CartoonsAsync";
-import { FavouritesAsync as Favourites } from "./Favourites/FavouritesAsync";
+import { Cartoons } from "./Cartoons/CartoonsAsync";
+import { Favourites } from "./Favourites/FavouritesAsync";
 import { HomePage } from "./HomePage/HomePage";
 import { Layout } from "./Layout/Layout";
-import { LoginAsync as Login } from "./Login/LoginAsync";
-import { MovieAsync as Movie } from "./Movie/MovieAsync";
-import { MoviesAsync as Movies } from "./Movies/MoviesAsync";
+import { Login } from "./Login/LoginAsync";
+import { Movie } from "./Movie/MovieAsync";
+import { Movies } from "./Movies/MoviesAsync";
 import { Page404 } from "./Page404/Page404";
-import { RegisterAsync as Register } from "./Register/RegisterAsync";
-import { SearchResultAsync as SearchResult } from "./SearchResult/SearchResultAsync";
-import { SeriesAsync as Series } from "./Series/SeriesAsync";
+import { Register } from "./Register/RegisterAsync";
+import { SearchResult } from "./SearchResult/SearchResultAsync";
+import { Series } from "./Series/SeriesAsync";
 
 function Pages() {
   const dispatch = useAppDispatch();
