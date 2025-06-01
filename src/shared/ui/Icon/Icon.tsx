@@ -1,12 +1,19 @@
-import React, { memo } from "react"
+import { memo } from "react"
+import { iconsObject } from "../../assets"
 
-interface IconProps extends React.ComponentPropsWithoutRef<"svg"> {
-  Svg: React.VFC<React.SVGProps<SVGSVGElement>>
+const SvgIcons = { ...iconsObject }
+
+export type ReactIconTypes = keyof typeof SvgIcons
+
+interface IconProps extends React.SVGProps<SVGSVGElement> {
+  name: ReactIconTypes
   className?: string
 }
 
 export const Icon = memo((props: IconProps) => {
-  const { className, Svg, ...otherProps } = props
+  const { className, name, ...otherProps } = props
+
+  const Svg = SvgIcons[name]
 
   return <Svg className={className} {...otherProps} />
 })

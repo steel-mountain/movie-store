@@ -1,11 +1,9 @@
 import { FC, useState } from "react"
-import { Link } from "react-router-dom"
 import { useTheme } from "../../providers/ThemeProvider/useTheme"
-import { Heart, HeartFavourite, HeartWhite } from "../../shared/assets"
 import { useAppDispatch, useAppSelector } from "../../shared/hooks/useRedux"
 import { addFavourites, removeFavourite } from "../../shared/store/slices/movies/movies.slice"
 import { Movies } from "../../shared/types"
-import { Button, Icon } from "../../shared/ui"
+import { AppLink, Button, Icon } from "../../shared/ui"
 import { Rating } from "../index"
 
 interface CardProps {
@@ -36,13 +34,13 @@ export const Card: FC<CardProps> = ({ movie, query }) => {
   return (
     <div className="w-[260px] min-h-[480px]">
       <div className="bg-[rgba(0,0,0,.5)]">
-        <Link to={query}>
+        <AppLink to={query}>
           <img
             className="mb-2 w-[260px] h-[400px] hover:opacity-40"
             src={movie.poster?.url}
             alt={movie.name}
           />
-        </Link>
+        </AppLink>
       </div>
       <Rating rating={movie.rating.kp} />
       <p className="mt-2 text-[#373737] font-medium text-xl dark:text-white">
@@ -53,8 +51,10 @@ export const Card: FC<CardProps> = ({ movie, query }) => {
         {isAuth && (
           <Button className="block w-[25px] h-[25px]" onClick={handleFavourite}>
             <Icon
-              Svg={isFav ? HeartFavourite : theme ? Heart : HeartWhite}
+              name="Heart"
               className="block w-[25px] h-[25px]"
+              stroke={isFav ? "#ff0000" : theme === "light" ? "black" : "white"}
+              fill={isFav ? "#ff0000" : theme === "light" ? "white" : "none"}
             />
           </Button>
         )}

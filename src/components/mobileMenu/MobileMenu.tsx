@@ -1,7 +1,6 @@
-import { Dispatch, FC, SetStateAction, useMemo, useState } from "react"
+import { Dispatch, FC, SetStateAction, useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { useTheme } from "../../providers/ThemeProvider/useTheme"
-import { CloseMenu, CloseMenuWhite, Search } from "../../shared/assets"
 import { useAppDispatch, useAppSelector } from "../../shared/hooks/useRedux"
 import { logout } from "../../shared/store/slices/auth/auth.slice"
 import { changeNewPage } from "../../shared/store/slices/movies/movies.slice"
@@ -16,7 +15,7 @@ interface MobileMenuProps {
 
 export const MobileMenu: FC<MobileMenuProps> = ({ isOpen, setMobileMenu }) => {
   const [search, setSearch] = useState("")
-  const { theme } = useTheme()
+  const { theme, toggleTheme } = useTheme()
 
   const isAuth = Boolean(useAppSelector((state) => state.auth.data))
   const navigate = useNavigate()
@@ -53,14 +52,17 @@ export const MobileMenu: FC<MobileMenuProps> = ({ isOpen, setMobileMenu }) => {
       >
         <div className="flex justify-end mt-[25px] mr-4">
           <Icon
-            Svg={theme ? CloseMenu : CloseMenuWhite}
+            name="CloseMenu"
             onClick={() => setMobileMenu(!isOpen)}
             cursor="pointer"
-            className="w-[25px] h-[25px]"
+            className={`w-[25px] h-[25px] cursor-pointer ${theme === "light" ? "" : "text-white"}`}
           />
         </div>
         <nav className=" my-8 mx-5 space-y-5 text-lg w-full">
           <div className="flex flex-wrap ml-[10px] gap-[10px]">
+            <Button>
+              <Icon name="Theme" className="h-8 w-8" onClick={toggleTheme} />
+            </Button>
             {isAuth ? (
               <>
                 <AppLink to="auth/login">
@@ -102,7 +104,7 @@ export const MobileMenu: FC<MobileMenuProps> = ({ isOpen, setMobileMenu }) => {
               onClick={handleSearch}
               className="h-[50px] w-[50px] bg-[#F4ED48] rounded flex justify-center items-center cursor-pointer"
             >
-              <Icon Svg={Search} className="h-[25px] w-[25px]" />
+              <Icon name="Search" className="h-[25px] w-[25px]" />
             </Button>
           </div>
         </nav>

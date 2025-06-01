@@ -1,7 +1,6 @@
 import { useRef, useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { useTheme } from "../../providers/ThemeProvider/useTheme"
-import { mobileMenu, mobileMenuWhite, Search, Theme } from "../../shared/assets"
 import { useAppDispatch, useAppSelector } from "../../shared/hooks/useRedux"
 import { logout } from "../../shared/store/slices/auth/auth.slice"
 import { changeNewPage } from "../../shared/store/slices/movies/movies.slice"
@@ -54,14 +53,14 @@ export const Header = () => {
             </ul>
           </nav>
           <div onClick={() => setMobileMenu(!isMobileMenu)} className="block ll:hidden cursor-pointer">
-            <Icon Svg={theme ? mobileMenu : mobileMenuWhite} />
+            <Icon name="BurgerMenu" className={`${theme === "dark" ? "text-white" : ""}`} />
           </div>
           <MobileMenu isOpen={isMobileMenu} setMobileMenu={setMobileMenu} />
         </div>
         <div className="flex items-center justify-between">
           <div className="hidden ll:flex gap-[10px] m-[10px]">
             <Button>
-              <Icon Svg={Theme} className="h-8 w-8" onClick={toggleTheme} />
+              <Icon name="Theme" className="h-8 w-8" onClick={toggleTheme} />
             </Button>
             {isAuth ? (
               <>
@@ -99,7 +98,7 @@ export const Header = () => {
                 className="h-[50px] w-[50px] bg-[#F4ED48] rounded flex justify-center items-center cursor-pointer"
                 onClick={handleSearch}
               >
-                <Icon Svg={Search} className="h-[25px] w-[25px]" />
+                <Icon name="Search" className="h-[25px] w-[25px]" />
               </Button>
             </div>
           </div>
