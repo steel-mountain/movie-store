@@ -1,15 +1,27 @@
 import { star } from "../../shared/assets"
 import { useGetMovieRandomQuery } from "../../shared/store/slices/movies/movies.api"
+import { Skeleton } from "../../shared/ui"
 
 export const HomePage = () => {
   const { data: poster, isLoading, isError } = useGetMovieRandomQuery()
 
   const watch = poster?.watchability?.items.filter((item) => item.name)
 
+  const skeleton = (
+    <section className="m:flex m:justify-between px-5 mt-[70px] relative">
+      <Skeleton width="300px" height="400px" className="mb-[10px] flex-shrink-0" />
+      <div className="ml-[40px] w-screen">
+        <Skeleton height="20px" width="80%" className="mb-[20px]" />
+        <Skeleton height="20px" width="80%" className="mb-[20px]" />
+        <Skeleton height="240px" width="80%" className="mb-[15px]" />
+      </div>
+    </section>
+  )
+
   return (
     <>
       {isError && <p className="text-center text-4xl dark:text-white">Ошибка доступа...</p>}
-      {isLoading && <p className="text-center text-4xl dark:text-white">Loading...</p>}
+      {isLoading && skeleton}
       {poster && poster !== undefined && (
         <section className="m:flex m:justify-between px-5 mt-[70px] relative">
           <img className="w-[300px] h-[400px] m-auto mb-[10px]" src={poster.poster.url} alt="poster" />
@@ -22,7 +34,7 @@ export const HomePage = () => {
               <span>{poster.rating.kp.toFixed(1)}</span>
             </div>
             <p className="mb-[15px] dark:text-white">{poster.description}</p>
-            <div className="">
+            <div>
               {watch?.map((item, i) => (
                 <a
                   href={item.url}

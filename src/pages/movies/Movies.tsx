@@ -1,6 +1,6 @@
 import { useEffect } from "react"
 import { useNavigate, useSearchParams } from "react-router-dom"
-import { Card, Paginate } from "../../components"
+import { Card, Paginate, SkeletonCardList } from "../../components"
 import { useGetMoviesQuery } from "../../shared/store/slices/movies/movies.api"
 
 export const Movies = () => {
@@ -42,7 +42,7 @@ export const Movies = () => {
     <>
       <div className="flex flex-wrap justify-center gap-[40px] relative">
         {isError && <p className="text-4xl dark:text-white">Ошибка доступа...</p>}
-        {isLoading || isFetching ? <p className="text-4xl dark:text-white">Loading...</p> : movies}
+        {isLoading || isFetching ? <SkeletonCardList /> : movies}
       </div>
       <div>
         {movies?.length !== 0 && !isFetching ? (

@@ -1,6 +1,6 @@
 import { useEffect } from "react"
 import { useNavigate, useSearchParams } from "react-router-dom"
-import { Card, Paginate } from "../../components"
+import { Card, Paginate, SkeletonCardList } from "../../components"
 import { useGetCartoonsQuery } from "../../shared/store/slices/movies/movies.api"
 
 export const Cartoons = () => {
@@ -43,7 +43,7 @@ export const Cartoons = () => {
     <>
       <div className="flex flex-wrap justify-center gap-[40px] relative">
         {isError && <p className="text-4xl dark:text-white">Ошибка доступа...</p>}
-        {isLoading || isFetching ? <p className="text-4xl dark:text-white">Loading...</p> : cartoons}
+        {isLoading || isFetching ? <SkeletonCardList /> : cartoons}
       </div>
       <div>
         {cartoons?.length !== 0 && !isFetching ? (

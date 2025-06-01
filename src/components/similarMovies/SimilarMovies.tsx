@@ -1,5 +1,6 @@
+import { useMemo } from "react"
 import { useGetSimilarMoviesQuery } from "../../shared/store/slices/movies/movies.api"
-import { AppLink } from "../../shared/ui"
+import { AppLink, Skeleton } from "../../shared/ui"
 
 export const SimilarMovies = () => {
   const {
@@ -16,8 +17,8 @@ export const SimilarMovies = () => {
     }),
   })
 
-  const similarMovies = data?.map((movie) => {
-    return (
+  const similarMovies = useMemo(() => {
+    return data?.map((movie) => (
       <AppLink
         to={`/movie/${movie.id}`}
         key={movie.id}
@@ -32,21 +33,25 @@ export const SimilarMovies = () => {
           {movie.name.length < 17 ? movie.name : `${movie.name.slice(0, 17)}...`}
         </h3>
       </AppLink>
-    )
-  })
+    ))
+  }, [data])
 
-  const error = isError && <p className="text-center text-4xl dark:text-white">Ошибка доступа...</p>
-
-  const loading = isLoading && isFetching && (
-    <p className="text-center text-4xl dark:text-white">Loading...</p>
+  const skeleton = (
+    <div className="flex flex-wrap gap-5 justify-center ss:justify-between mm:justify-start l:justify-between">
+      {Array.from({ length: 6 }).map(() => (
+        <div className="flex flex-col items-center justify-center gap-2 w-[200px] h-[400px]">
+          <Skeleton width="200px" height="400px" border="8px" />
+        </div>
+      ))}
+    </div>
   )
 
   return (
     <>
       <section>
         <h2 className="text-3xl font-bold text-neutral-700 mb-[25px] dark:text-white">Смотрите также</h2>
-        {error}
-        {loading}
+        {isError && <p className="text-center text-4xl dark:text-white">Ошибка доступа...</p>}
+        {isLoading && isFetching && skeleton}
         {data?.length > 0 && (
           <div className="flex flex-wrap gap-5 justify-center ss:justify-between mm:justify-start l:justify-between">
             {similarMovies}
