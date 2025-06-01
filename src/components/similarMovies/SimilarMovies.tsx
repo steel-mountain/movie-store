@@ -16,7 +16,7 @@ export const SimilarMovies = () => {
     }),
   })
 
-  const getSimilarMovies = data?.map((movie) => {
+  const similarMovies = data?.map((movie) => {
     return (
       <AppLink
         to={`/movie/${movie.id}`}
@@ -49,7 +49,7 @@ export const SimilarMovies = () => {
         {loading}
         {data?.length > 0 && (
           <div className="flex flex-wrap gap-5 justify-center ss:justify-between mm:justify-start l:justify-between">
-            {getSimilarMovies}
+            {similarMovies}
           </div>
         )}
       </section>

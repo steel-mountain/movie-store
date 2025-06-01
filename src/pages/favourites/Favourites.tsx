@@ -3,10 +3,11 @@ import { useAppSelector } from "../../shared/hooks/useRedux"
 
 export const Favourites = () => {
   const { favourites } = useAppSelector((state) => state.movies)
+
   const isAuth = Boolean(useAppSelector((state) => state.auth.data))
 
   const movies = favourites?.map((movie, i) => {
-    return <Card query={`/favourites/${movie.id}`} key={i} movie={movie} isFavourite />
+    return <Card query={`/favourites/${movie.id}`} key={i} movie={movie} />
   })
 
   return (

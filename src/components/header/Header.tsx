@@ -10,18 +10,18 @@ import { getAuthButtonClass } from "../../shared/utils/buttonClasses"
 import { MobileMenu, NavItem, Wrapper } from "../index"
 
 export const Header = () => {
-  const [isMobileMenu, setIsMobileMenu] = useState(false)
+  const [isMobileMenu, setMobileMenu] = useState(false)
   const { theme, toggleTheme } = useTheme()
 
   const navigate = useNavigate()
-  const search = useRef<HTMLInputElement>(null)
+  const searchRef = useRef<HTMLInputElement>(null)
 
   const isAuth = Boolean(useAppSelector((state) => state.auth.data))
   const dispatch = useAppDispatch()
 
   const handleSearch = () => {
-    if (search.current?.value.trim()) {
-      navigate(`/search?query=${search.current?.value}`)
+    if (searchRef.current?.value.trim()) {
+      navigate(`/search?query=${searchRef.current?.value}`)
       dispatch(changeNewPage(1))
     } else {
       navigate("/movies")
@@ -53,10 +53,10 @@ export const Header = () => {
               <NavItem text="Избранное" link="/favourites" />
             </ul>
           </nav>
-          <div onClick={() => setIsMobileMenu(!isMobileMenu)} className="block ll:hidden cursor-pointer">
+          <div onClick={() => setMobileMenu(!isMobileMenu)} className="block ll:hidden cursor-pointer">
             <Icon Svg={theme ? mobileMenu : mobileMenuWhite} />
           </div>
-          <MobileMenu isOpen={isMobileMenu} setIsMobileMenu={setIsMobileMenu} />
+          <MobileMenu isOpen={isMobileMenu} setMobileMenu={setMobileMenu} />
         </div>
         <div className="flex items-center justify-between">
           <div className="hidden ll:flex gap-[10px] m-[10px]">
@@ -89,7 +89,7 @@ export const Header = () => {
           <div className="hidden ll:flex ll:items-center ll:w-auto">
             <div className="flex items-center w-full">
               <Input
-                ref={search}
+                ref={searchRef}
                 className="h-[50px] w-full max-w-[300px] bg-[#E4E4E4] dark:bg-[#1B1E25] dark:text-white rounded font-semibold text-lg text-[#535353] px-4 focus:outline-none"
                 type="text"
                 placeholder="Search"

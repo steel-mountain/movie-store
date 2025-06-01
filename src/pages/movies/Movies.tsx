@@ -5,6 +5,7 @@ import { useGetMoviesQuery } from "../../shared/store/slices/movies/movies.api"
 
 export const Movies = () => {
   const [searchParams] = useSearchParams()
+
   const page = Number(searchParams.get("page") || "1")
   const navigate = useNavigate()
 

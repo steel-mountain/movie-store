@@ -1,4 +1,4 @@
-import { FC, MouseEvent, useState } from "react"
+import { FC, useState } from "react"
 import { Link } from "react-router-dom"
 import { useTheme } from "../../providers/ThemeProvider/useTheme"
 import { Heart, HeartFavourite, HeartWhite } from "../../shared/assets"
@@ -11,10 +11,9 @@ import { Rating } from "../index"
 interface CardProps {
   movie: Movies
   query: string
-  isFavourite?: boolean
 }
 
-export const Card: FC<CardProps> = ({ movie, query, isFavourite = false }) => {
+export const Card: FC<CardProps> = ({ movie, query }) => {
   const { theme } = useTheme()
 
   const dispatch = useAppDispatch()
@@ -24,24 +23,12 @@ export const Card: FC<CardProps> = ({ movie, query, isFavourite = false }) => {
 
   const [isFav, setIsFav] = useState(typeof favourite === "object" ? true : false)
 
-  const handlerIsOrFalseFav = (e: MouseEvent<HTMLButtonElement>) => {
-    e.preventDefault()
-
+  const handleFavourite = () => {
     if (isFav) {
       setIsFav(false)
       dispatch(removeFavourite(movie))
     } else {
       setIsFav(true)
-      dispatch(addFavourites(movie))
-    }
-  }
-
-  const handlerAddOrRemoveMovie = (e: MouseEvent<HTMLButtonElement>) => {
-    e.preventDefault()
-
-    if (isFav) {
-      dispatch(removeFavourite(movie))
-    } else {
       dispatch(addFavourites(movie))
     }
   }
@@ -64,10 +51,7 @@ export const Card: FC<CardProps> = ({ movie, query, isFavourite = false }) => {
       <div className="flex justify-between">
         <p className="text-[#C3C3C3] font-medium text-lg">{movie.year}</p>
         {isAuth && (
-          <Button
-            className="block w-[25px] h-[25px]"
-            onClick={isFavourite ? handlerAddOrRemoveMovie : handlerIsOrFalseFav}
-          >
+          <Button className="block w-[25px] h-[25px]" onClick={handleFavourite}>
             <Icon
               Svg={isFav ? HeartFavourite : theme ? Heart : HeartWhite}
               className="block w-[25px] h-[25px]"

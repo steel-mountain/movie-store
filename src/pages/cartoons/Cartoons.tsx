@@ -5,6 +5,7 @@ import { useGetCartoonsQuery } from "../../shared/store/slices/movies/movies.api
 
 export const Cartoons = () => {
   const [searchParams] = useSearchParams()
+
   const page = Number(searchParams.get("page") || "1")
   const navigate = useNavigate()
 
@@ -34,18 +35,18 @@ export const Cartoons = () => {
     navigate(`?page=${selected + 1}`)
   }
 
-  const movies = data?.map((movie, i) => {
-    return <Card query={`/cartoons/${movie.id}`} key={i} movie={movie} />
+  const cartoons = data?.map((cartoon, i) => {
+    return <Card query={`/cartoons/${cartoon.id}`} key={i} movie={cartoon} />
   })
 
   return (
     <>
       <div className="flex flex-wrap justify-center gap-[40px] relative">
         {isError && <p className="text-4xl dark:text-white">Ошибка доступа...</p>}
-        {isLoading || isFetching ? <p className="text-4xl dark:text-white">Loading...</p> : movies}
+        {isLoading || isFetching ? <p className="text-4xl dark:text-white">Loading...</p> : cartoons}
       </div>
       <div>
-        {movies?.length !== 0 && !isFetching ? (
+        {cartoons?.length !== 0 && !isFetching ? (
           <Paginate initialPage={page - 1} pageCount={pageCount} handlePageClick={handlePageClick} />
         ) : null}
       </div>

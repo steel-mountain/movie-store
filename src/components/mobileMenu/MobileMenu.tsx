@@ -1,4 +1,4 @@
-import { Dispatch, FC, SetStateAction, useState } from "react"
+import { Dispatch, FC, SetStateAction, useMemo, useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { useTheme } from "../../providers/ThemeProvider/useTheme"
 import { CloseMenu, CloseMenuWhite, Search } from "../../shared/assets"
@@ -11,10 +11,10 @@ import { NavItem } from "../index"
 
 interface MobileMenuProps {
   isOpen: boolean
-  setIsMobileMenu: Dispatch<SetStateAction<boolean>>
+  setMobileMenu: Dispatch<SetStateAction<boolean>>
 }
 
-export const MobileMenu: FC<MobileMenuProps> = ({ isOpen, setIsMobileMenu }) => {
+export const MobileMenu: FC<MobileMenuProps> = ({ isOpen, setMobileMenu }) => {
   const [search, setSearch] = useState("")
   const { theme } = useTheme()
 
@@ -44,7 +44,7 @@ export const MobileMenu: FC<MobileMenuProps> = ({ isOpen, setIsMobileMenu }) => 
         className={`fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 z-10 transition-transform transform ${
           isOpen ? "flex" : "hidden"
         } block ll:hidden`}
-        onClick={() => setIsMobileMenu(!isOpen)}
+        onClick={() => setMobileMenu(!isOpen)}
       />
       <div
         className={`transition-all duration-1000 fixed right-0 top-0 w-[55%] bg-white z-20 justify-center min-h-[150vh] ${
@@ -54,7 +54,7 @@ export const MobileMenu: FC<MobileMenuProps> = ({ isOpen, setIsMobileMenu }) => 
         <div className="flex justify-end mt-[25px] mr-4">
           <Icon
             Svg={theme ? CloseMenu : CloseMenuWhite}
-            onClick={() => setIsMobileMenu(!isOpen)}
+            onClick={() => setMobileMenu(!isOpen)}
             cursor="pointer"
             className="w-[25px] h-[25px]"
           />
@@ -93,7 +93,7 @@ export const MobileMenu: FC<MobileMenuProps> = ({ isOpen, setIsMobileMenu }) => 
           <div className="flex items-center">
             <Input
               value={search}
-              onChange={(value: string) => setSearch(value)}
+              onChange={(value) => setSearch(value)}
               className="h-[50px] max-w-[300px] w-full bg-[#E4E4E4] dark:bg-[#1B1E25] dark:text-white rounded font-semibold text-lg text-[#535353] px-4 focus:outline-none"
               type="text"
               placeholder="Search"

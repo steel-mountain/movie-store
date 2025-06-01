@@ -8,6 +8,7 @@ import { Button, Input } from "../../shared/ui"
 export const Login = () => {
   const isAuth = Boolean(useAppSelector((state) => state.auth.data))
   const dispatch = useAppDispatch()
+
   const {
     handleSubmit,
     control,
