@@ -1,6 +1,7 @@
 import { Provider as StoreProvider } from "react-redux"
 import { BrowserRouter } from "react-router-dom"
 import { store } from "../shared/store"
+import { ErrorBoundary } from "./ErrorBoundary/ErrorBoundary"
 import { ThemeProvider } from "./ThemeProvider/ThemeProvider"
 
 interface AppProviderProps {
@@ -9,10 +10,12 @@ interface AppProviderProps {
 
 export const AppProviders = ({ children }: AppProviderProps) => {
   return (
-    <StoreProvider store={store}>
-      <BrowserRouter>
-        <ThemeProvider>{children}</ThemeProvider>
-      </BrowserRouter>
-    </StoreProvider>
+    <BrowserRouter>
+      <StoreProvider store={store}>
+        <ErrorBoundary>
+          <ThemeProvider>{children}</ThemeProvider>
+        </ErrorBoundary>
+      </StoreProvider>
+    </BrowserRouter>
   )
 }
