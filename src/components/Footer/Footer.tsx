@@ -8,7 +8,7 @@ export const Footer = () => {
         Movie-store
       </AppLink>
       <p className="mt-[10px] text-xl text-[#373737] dark:text-white">
-        2024 ООО "Movie-store". Все права защищены. 12+
+        2024-2025 ООО "Movie-store". Все права защищены. 12+
       </p>
     </Wrapper>
   )
