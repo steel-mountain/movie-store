@@ -1,7 +1,7 @@
 import { Controller, useForm } from "react-hook-form"
 import { Navigate } from "react-router-dom"
 import { useAppDispatch, useAppSelector } from "../../shared/hooks/useRedux"
-import { fetchAuthLogin } from "../../shared/store/slices/auth/auth.slice"
+import { fetchAuthLogin } from "../../shared/store/slices/auth/auth.thunks"
 import { UserLogin } from "../../shared/types/users"
 import { Button, Input } from "../../shared/ui"
 

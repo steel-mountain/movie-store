@@ -1,21 +1,6 @@
-import { PayloadAction, createAsyncThunk, createSlice } from "@reduxjs/toolkit"
-import axios from "../../../api/axios"
+import { PayloadAction, createSlice } from "@reduxjs/toolkit"
 import { UserLogin, UserRegister } from "../../../types"
-
-export const fetchAuthLogin = createAsyncThunk("auth/fetchAuthLogin", async (params: UserLogin) => {
-  const { data } = await axios.post("/auth/login", params)
-  return data
-})
-
-export const fetchAuthRegister = createAsyncThunk("auth/fetchAuthRegister", async (params: UserRegister) => {
-  const { data } = await axios.post("/auth/register", params)
-  return data
-})
-
-export const fetchAuthMe = createAsyncThunk("auth/fetchAuthMe", async () => {
-  const { data } = await axios.get("/auth/me")
-  return data
-})
+import { fetchAuthLogin, fetchAuthMe, fetchAuthRegister } from "./auth.thunks"
 
 interface InitialState {
   data: UserLogin | null
@@ -37,6 +22,7 @@ const authSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
+      // Login
       .addCase(fetchAuthLogin.pending, (state) => {
         state.status = "loading"
         state.data = null
@@ -49,18 +35,7 @@ const authSlice = createSlice({
         state.status = "error"
         state.data = null
       })
-      .addCase(fetchAuthMe.pending, (state) => {
-        state.status = "loading"
-        state.data = null
-      })
-      .addCase(fetchAuthMe.fulfilled, (state, action: PayloadAction<UserLogin>) => {
-        state.status = "loaded"
-        state.data = action.payload
-      })
-      .addCase(fetchAuthMe.rejected, (state) => {
-        state.status = "error"
-        state.data = null
-      })
+      // Register
       .addCase(fetchAuthRegister.pending, (state) => {
         state.status = "loading"
         state.data = null
@@ -70,6 +45,19 @@ const authSlice = createSlice({
         state.data = action.payload
       })
       .addCase(fetchAuthRegister.rejected, (state) => {
+        state.status = "error"
+        state.data = null
+      })
+      // Me
+      .addCase(fetchAuthMe.pending, (state) => {
+        state.status = "loading"
+        state.data = null
+      })
+      .addCase(fetchAuthMe.fulfilled, (state, action: PayloadAction<UserLogin>) => {
+        state.status = "loaded"
+        state.data = action.payload
+      })
+      .addCase(fetchAuthMe.rejected, (state) => {
         state.status = "error"
         state.data = null
       })

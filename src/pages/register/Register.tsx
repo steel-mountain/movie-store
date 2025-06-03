@@ -2,7 +2,7 @@ import { Controller, useForm } from "react-hook-form"
 import { Navigate } from "react-router-dom"
 import { useTheme } from "../../providers/ThemeProvider/useTheme"
 import { useAppDispatch, useAppSelector } from "../../shared/hooks/useRedux"
-import { fetchAuthRegister } from "../../shared/store/slices/auth/auth.slice"
+import { fetchAuthRegister } from "../../shared/store/slices/auth/auth.thunks"
 import { UserRegister } from "../../shared/types"
 import { Button, Icon, Input } from "../../shared/ui"
 

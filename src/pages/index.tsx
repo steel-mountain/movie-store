@@ -2,7 +2,7 @@ import { Suspense, useEffect } from "react"
 import { useRoutes } from "react-router-dom"
 import { appRoutes } from "../routes"
 import { useAppDispatch } from "../shared/hooks/useRedux"
-import { fetchAuthMe } from "../shared/store/slices/auth/auth.slice"
+import { fetchAuthMe } from "../shared/store/slices/auth/auth.thunks"
 import { Loader } from "../shared/ui"
 
 export const App = () => {
