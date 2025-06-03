@@ -73,14 +73,10 @@ export const Header = () => {
             ) : (
               <>
                 <AppLink to="auth/login">
-                  <Button className={getAuthButtonClass(isAuth)} onClick={onClickLogout}>
-                    Вход
-                  </Button>
+                  <Button className={getAuthButtonClass(isAuth)}>Вход</Button>
                 </AppLink>
                 <AppLink to="auth/register">
-                  <Button className={getAuthButtonClass(isAuth)} onClick={onClickLogout}>
-                    Регистрация
-                  </Button>
+                  <Button className={getAuthButtonClass(isAuth)}>Регистрация</Button>
                 </AppLink>
               </>
             )}
