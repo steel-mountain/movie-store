@@ -22,7 +22,7 @@ const MovieContent: FC<{ id: string }> = ({ id }) => {
     movie?.countries && movie?.countries.length !== 0
       ? movie?.countries.map((item) => item.name).join(", ")
       : "Страна не указана"
-  const runtime = movie?.movieLength ? movie.movieLength : "Продолжительность не указана"
+  const runtime = movie?.movieLength ? movie.movieLength + " мин" : "Продолжительность не указана"
   const kp = movie?.rating?.kp ? movie.rating.kp : null
   const imdb = movie?.rating?.imdb ? movie.rating.imdb : null
   const genres =
@@ -80,7 +80,7 @@ const MovieContent: FC<{ id: string }> = ({ id }) => {
                     </p>
                     <p className="text-lg dark:text-white">
                       <span className="font-bold">Продолжительность: </span>
-                      {runtime}мин
+                      {runtime}
                     </p>
                     <p className="text-lg dark:text-white">
                       <span className="font-bold">Жанр: </span>

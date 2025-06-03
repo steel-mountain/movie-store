@@ -5,7 +5,7 @@ import { useAppDispatch } from "../shared/hooks/useRedux"
 import { fetchAuthMe } from "../shared/store/slices/auth/auth.slice"
 import { Loader } from "../shared/ui"
 
-export const Pages = () => {
+export const App = () => {
   const dispatch = useAppDispatch()
 
   useEffect(() => {
