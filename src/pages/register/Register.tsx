@@ -1,12 +1,14 @@
 import { Controller, useForm } from "react-hook-form"
 import { Navigate } from "react-router-dom"
-import { avatar } from "../../shared/assets"
+import { useTheme } from "../../providers/ThemeProvider/useTheme"
 import { useAppDispatch, useAppSelector } from "../../shared/hooks/useRedux"
 import { fetchAuthRegister } from "../../shared/store/slices/auth/auth.slice"
 import { UserRegister } from "../../shared/types"
-import { Button, Input } from "../../shared/ui"
+import { Button, Icon, Input } from "../../shared/ui"
 
 export const Register = () => {
+  const { theme } = useTheme()
+
   const isAuth = Boolean(useAppSelector((state) => state.auth.data))
   const dispatch = useAppDispatch()
 
@@ -31,9 +33,18 @@ export const Register = () => {
   }
 
   return (
-    <section className="bg-white max-w-[400px] mx-auto p-[50px] rounded-xl">
-      <h1 className="text-center text-2xl font-bold text-gray-800 mb-3">Создание аккаунта</h1>
-      <img className="w-[120] h-[120px] mx-auto" src={avatar} alt="avatar" />
+    <section className="bg-white max-w-[400px] mx-auto p-[50px] rounded-xl dark:bg-[#0B0C0E]">
+      <h1 className="text-center text-2xl font-bold text-gray-800 mb-3 dark:text-default">
+        Создание аккаунта
+      </h1>
+      <div className="flex justify-center mb-6">
+        <Icon
+          name="Avatar"
+          width="80"
+          height="80"
+          className={`${theme === "light" ? "text-[#0B0C0E]" : "text-white"}`}
+        />
+      </div>
       <form onSubmit={handleSubmit(onSubmit)}>
         <Controller
           name="name"
@@ -47,7 +58,7 @@ export const Register = () => {
               onChange={onChange}
               placeholder="Name"
               type="text"
-              className="w-full p-[15px] border border:#CACACA"
+              className="w-full p-[15px] border border:#CACACA dark:bg-[#1B1E25] dark:text-white"
             />
           )}
         />
@@ -63,7 +74,7 @@ export const Register = () => {
               onChange={onChange}
               placeholder="Email"
               type="email"
-              className="w-full p-[15px] border border:#CACACA mt-5"
+              className="w-full p-[15px] border border:#CACACA mt-5 dark:bg-[#1B1E25] dark:text-white"
             />
           )}
         />
@@ -83,7 +94,7 @@ export const Register = () => {
               onChange={onChange}
               placeholder="Password"
               type="password"
-              className="w-full p-[15px] border border:#CACACA mt-5"
+              className="w-full p-[15px] border border:#CACACA mt-5 dark:bg-[#1B1E25] dark:text-white"
             />
           )}
         />

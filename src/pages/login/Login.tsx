@@ -30,8 +30,8 @@ export const Login = () => {
   }
 
   return (
-    <section className="bg-white max-w-[400px] mx-auto p-[50px] rounded-xl">
-      <h1 className="text-center text-2xl font-bold text-gray-800 mb-7">Вход в аккаунт</h1>
+    <section className="bg-white max-w-[400px] mx-auto p-[50px] rounded-xl dark:bg-[#0B0C0E]">
+      <h1 className="text-center text-2xl font-bold text-gray-800 mb-7 dark:text-default">Вход в аккаунт</h1>
       <form onSubmit={handleSubmit(onSubmit)}>
         <Controller
           name="email"
@@ -42,7 +42,7 @@ export const Login = () => {
               onChange={onChange}
               placeholder="Email"
               type="email"
-              className="w-full p-[15px] border border:#CACACA"
+              className="w-full p-[15px] border border:#CACACA dark:bg-[#1B1E25] dark:text-white"
             />
           )}
         />
@@ -59,7 +59,7 @@ export const Login = () => {
               onChange={onChange}
               placeholder="Password"
               type="password"
-              className="w-full p-[15px] border border:#CACACA mt-5"
+              className="w-full p-[15px] border border:#CACACA mt-5 dark:bg-[#1B1E25] dark:text-white"
             />
           )}
         />
