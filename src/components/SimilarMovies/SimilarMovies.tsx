@@ -38,8 +38,8 @@ export const SimilarMovies = () => {
 
   const skeleton = (
     <div className="flex flex-wrap gap-5 justify-center ss:justify-between mm:justify-start l:justify-between">
-      {Array.from({ length: 6 }).map(() => (
-        <div className="flex flex-col items-center justify-center gap-2 w-[200px] h-[400px]">
+      {Array.from({ length: 6 }).map((_, index) => (
+        <div key={index} className="flex flex-col items-center justify-center gap-2 w-[200px] h-[400px]">
           <Skeleton width="200px" height="400px" border="8px" />
         </div>
       ))}
