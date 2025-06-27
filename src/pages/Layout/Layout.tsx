@@ -1,9 +1,12 @@
 import { Outlet } from "react-router-dom"
 import { Footer, Header, Wrapper } from "../../components"
+import { useTheme } from "../../providers/ThemeProvider/useTheme"
 
 export const Layout = () => {
+  const { theme } = useTheme()
+
   return (
-    <div className="h-screen min-h-screen flex flex-col">
+    <div className={`h-screen min-h-screen flex flex-col ${theme}`}>
       <header className="w-full h-[100px] flex items-center dark:bg-[#0B0C0E]">
         <Header />
       </header>

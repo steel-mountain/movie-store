@@ -14,9 +14,6 @@ export function useTheme(): UseThemeResult {
     const newTheme = theme === "light" ? "dark" : "light"
 
     setTheme?.(newTheme)
-    document.body.classList.remove(theme)
-    document.body.classList.add(newTheme)
-
     localStorage.setItem(LOCAL_STORAGE_THEME_MOVIE_STORE, newTheme)
   }
 
