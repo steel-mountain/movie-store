@@ -6,7 +6,7 @@ import { ResponseMovie, ResponseMovies } from "../../../types"
 export const moviesApi = createApi({
   reducerPath: "movieApi",
   baseQuery: fetchBaseQuery({
-    baseUrl: `https://api.kinopoisk.dev/v1.4`,
+    baseUrl: `https://api.poiskkino.dev/v1.4`,
   }),
   endpoints: (builder) => ({
     getMovies: builder.query<ResponseMovies, number>({
